@@ -143,5 +143,20 @@ if (require.main === module) {
   });
 }
 
-// Export for AWS Lambda
-module.exports.handler = serverless(app);
+// Export for AWS Lambda with proper Express app support
+// This wraps the Express app to handle Lambda events
+module.exports.handler = serverless(app, {
+  request: (request, event, context) => {
+    // Pass event and context to app for debugging if needed
+    request.context = { event, context };
+  },
+  response: (response, event, context) => {
+    // Ensure proper CORS headers in response
+    if (!response.headers) {
+      response.headers = {};
+    }
+    response.headers['Access-Control-Allow-Origin'] = '*';
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,X-Requested-With,Accept';
+    response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,POST,GET,PUT,PATCH,DELETE';
+  }
+});
