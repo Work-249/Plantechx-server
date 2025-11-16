@@ -12,7 +12,7 @@ provider:
 
 functions:
   api:
-    handler: server.main
+    handler: index.handler
     events:
       - httpApi:
           path: /{proxy+}
@@ -21,6 +21,18 @@ functions:
 package:
   individually: false
   patterns:
+    # Include essential entry points and folders
+    - "server.js"
+    - "index.js"
+    - "package.json"
+    - "config/**"
+    - "routes/**"
+    - "models/**"
+    - "utils/**"
+    - "middleware/**"
+    - "uploads/**"
+    - "node_modules/**"
+    # Keep existing exclusions to reduce package size
     - "!node_modules/aws-sdk/**"
     - "!node_modules/.bin/**"
     - "!node_modules/*/test/**"
