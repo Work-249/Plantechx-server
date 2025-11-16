@@ -1,37 +1,38 @@
 version: 0.2
 
-env:
-  variables:
-    STAGE: "prod"
-
 phases:
+  pre_build:
+    commands:
+      - echo "Starting CodeBuild..."
+      - pwd
+      - ls -la
+      - # .env creation removed (serverless-dotenv-plugin no longer used)
+      - echo "Installing Serverless v3 globally..."
+      - npm install -g serverless@3
+      - export PATH=$(npm bin -g):$PATH
+
   install:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Installing Serverless..."
-      - npm install -g serverless@3
-      - export PATH=$(npm bin -g):$PATH
-
-  pre_build:
-    commands:
-      - echo "Environment variables loaded from CodeBuild:"
-      - echo "MONGO_URI and JWT_SECRET loaded (hidden)."
-      - echo "Installing dependencies..."
-      - npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - echo "Current directory check..."
+      - pwd
+      - ls -la
 
   build:
     commands:
-      - echo "Deploying with Serverless..."
-      - serverless deploy --stage $STAGE --verbose
+      - echo "Installing dependencies..."
+      - npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - echo "Packaging and Deploying using Serverless..."
+      - serverless deploy --stage prod --verbose
 
   post_build:
     commands:
-      - echo "Deployment finished."
+      - echo "Deployment completed successfully."
+      - echo "Listing deployed artifacts..."
 
 artifacts:
   base-directory: .serverless
   files:
-    - "**/*"
+    - '**/*'
   name: serverless-artifacts
-  discard-paths: no
