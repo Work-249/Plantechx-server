@@ -2,40 +2,51 @@ version: 0.2
 
 env:
   variables:
-    STAGE: "prod"
+    NODE_ENV: development
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 20
-    commands:
-      - echo "Install phase: installing production dependencies only..."
-      # install only production deps to keep node_modules small
-      - npm ci --only=production --no-audit --no-fund
-      - npm install -g serverless@3
-      - export PATH=$(npm bin -g):$PATH
-
   pre_build:
     commands:
-      - echo "pre_build..."
-      - echo "Attempting to raise file descriptor limit (may be restricted in CI)..."
-      - ulimit -n 4096 || echo "Could not raise ulimit; continuing"
-      - echo "Ensure MONGO_URI and JWT_SECRET are provided as env vars in CodeBuild/CodePipeline if needed"
-
+      - echo "=== Build Environment Setup ==="
+      - echo "Repository structure:"
+      - ls -la
+      - echo "Navigating to backend directory"
+      - if [ -d backend ]; then cd backend; else echo 'ERROR: backend directory not found. Current listing:'; ls -la; exit 1; fi
+      - echo "Backend directory contents:"
+      - ls -la
+      - echo "Checking serverless.yml file:"
+      - cat serverless.yml
+      - echo "=== End of serverless.yml ==="
+      - echo "Checking for hidden characters:"
+      - hexdump -C serverless.yml | tail -5
+      - echo "Increasing file descriptor limit"
+      - ulimit -n 65536
+      - echo "Installing all dependencies"
+      - npm ci
+      - echo "Checking serverless version:"
+      - npx serverless --version
+      - echo "Validating serverless.yml syntax with detailed output:"
+      - npx serverless print --stage prod --region ap-south-1 --verbose
+      
   build:
     commands:
-      - echo "Packaging service (no deploy)..."
-      - ulimit -n 4096 || echo "Could not raise ulimit before packaging; continuing"
-      - serverless package --stage $STAGE --verbose
-      - echo "Packaging finished."
+      - echo "=== Building Serverless Application ==="
+      - npx serverless package --stage prod --region ap-south-1 --verbose
+      
+  post_build:
+    commands:
+      - echo "=== Build Completion ==="
+      - echo "Build completed successfully"
+      - if [ -d .serverless ]; then
+          echo "Serverless artifacts found:";
+          ls -la .serverless/;
+        else
+          echo "ERROR: No .serverless directory found";
+          exit 1;
+        fi
 
 artifacts:
-  base-directory: .serverless
   files:
-    - '**/*'
-  discard-paths: no
-
-cache:
-  paths:
-    - '/root/.npm/**/*'
-    - 'node_modules/**/*'
+    - backend/.serverless/**/*
+    - backend/serverless.yml
+  name: academic-management-backend-artifacts
