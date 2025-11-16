@@ -8,9 +8,7 @@ provider:
   stage: prod
   timeout: 20
   memorySize: 512
-  environment:
-    MONGO_URI: ${env:MONGO_URI}
-    JWT_SECRET: ${env:JWT_SECRET}
+  # environment variables removed for deployment security
 
 functions:
   api:
