@@ -28,7 +28,6 @@ phases:
   post_build:
     commands:
       - echo "Deployment finished."
-      - if [ -d ".serverless" ]; then ls -la .serverless/; else echo "No .serverless directory"; fi
 
 artifacts:
   base-directory: .serverless
