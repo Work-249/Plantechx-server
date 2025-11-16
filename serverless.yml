@@ -23,7 +23,6 @@ package:
   patterns:
     # Include essential entry points and folders
     - "server.js"
-    - "index.js"
     - "package.json"
     - "config/**"
     - "routes/**"
