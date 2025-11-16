@@ -46,6 +46,8 @@
     "serverless": "^3.40.0",
     "serverless-offline": "^12.0.4",
     "serverless-webpack": "^5.15.3",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-plugin-tracing": "^2.0.0",
     "supertest": "^6.3.3",
     "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
