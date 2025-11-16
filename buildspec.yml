@@ -1,46 +1,38 @@
 version: 0.2
 
+env:
+  variables:
+    STAGE: "prod"
+
 phases:
   install:
     runtime-versions:
       nodejs: 20
     commands:
-      - "echo Install phase starting..."
-      - "pwd"
-      - "ls -la"
-      - "echo Installing Serverless v3 globally..."
-      - "npm install -g serverless@3"
-      - 'export PATH=$(npm bin -g):$PATH'
-      - "echo Install phase completed."
+      - echo "Installing Serverless..."
+      - npm install -g serverless@3
+      - export PATH=$(npm bin -g):$PATH
 
   pre_build:
     commands:
-      - "echo Starting pre_build..."
-      - "pwd"
-      - "ls -la"
-      - "echo Preparing environment..."
-      - "node -v || true"
-      - "npm -v || true"
-      - "echo pre_build completed."
+      - echo "Environment variables loaded from CodeBuild:"
+      - echo "MONGO_URI and JWT_SECRET loaded (hidden)."
+      - echo "Installing dependencies..."
+      - npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 
   build:
     commands:
-      - "echo Build phase starting..."
-      - "set -e"
-      - "echo Installing dependencies..."
-      - "npm ci --no-audit --no-fund || npm install --no-audit --no-fund"
-      - "echo Packaging and Deploying using Serverless..."
-      - "serverless deploy --stage prod --verbose"
-      - "echo Build phase completed."
+      - echo "Deploying with Serverless..."
+      - serverless deploy --stage $STAGE --verbose
 
   post_build:
     commands:
-      - "echo Deployment completed successfully."
-      - "echo Listing deployed artifacts..."
-      - "if [ -d '.serverless' ]; then ls -la .serverless/; else echo 'Warning: .serverless directory not found'; fi"
+      - echo "Deployment finished."
+      - if [ -d ".serverless" ]; then ls -la .serverless/; else echo "No .serverless directory"; fi
 
 artifacts:
   base-directory: .serverless
   files:
     - "**/*"
-  name: "serverless-artifacts"
+  name: serverless-artifacts
+  discard-paths: no
