@@ -14,7 +14,7 @@ phases:
       - cat serverless.yml
       - echo "=== End of serverless.yml ==="
       - echo "Installing all dependencies"
-      - npm ci
+      - npm install
       - echo "Checking serverless version:"
       - npx serverless --version
       - echo "Validating serverless.yml syntax with detailed output:"
