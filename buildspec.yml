@@ -17,10 +17,16 @@ phases:
   pre_build:
     commands:
       - echo "pre_build..."
+      - echo "Attempting to raise file descriptor limit (may be restricted in CI)..."
+      - ulimit -n 4096 || echo "Could not raise ulimit; continuing"
       - echo "Ensure MONGO_URI and JWT_SECRET are provided as env vars in CodeBuild/CodePipeline if needed"
 
   build:
     commands:
+      - echo "Pruning devDependencies to reduce file count before packaging..."
+      - npm prune --production || echo "npm prune failed; continuing"
+      - echo "Ensuring file descriptor limit is raised before packaging..."
+      - ulimit -n 4096 || echo "Could not raise ulimit; continuing"
       - echo "Packaging service (no deploy)..."
       - serverless package --stage $STAGE --verbose
       - echo "Packaging finished."
