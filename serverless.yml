@@ -19,7 +19,6 @@ functions:
           method: ANY
 
 plugins:
-  - serverless-dotenv-plugin
   - serverless-plugin-tracing
 
 package:
