@@ -9,8 +9,9 @@ phases:
     runtime-versions:
       nodejs: 20
     commands:
-      - echo "Install phase..."
-      - npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - echo "Install phase: installing production dependencies only..."
+      # install only production deps to keep node_modules small
+      - npm ci --only=production --no-audit --no-fund
       - npm install -g serverless@3
       - export PATH=$(npm bin -g):$PATH
 
@@ -23,11 +24,8 @@ phases:
 
   build:
     commands:
-      - echo "Pruning devDependencies to reduce file count before packaging..."
-      - npm prune --production || echo "npm prune failed; continuing"
-      - echo "Ensuring file descriptor limit is raised before packaging..."
-      - ulimit -n 4096 || echo "Could not raise ulimit; continuing"
       - echo "Packaging service (no deploy)..."
+      - ulimit -n 4096 || echo "Could not raise ulimit before packaging; continuing"
       - serverless package --stage $STAGE --verbose
       - echo "Packaging finished."
 
@@ -36,3 +34,8 @@ artifacts:
   files:
     - '**/*'
   discard-paths: no
+
+cache:
+  paths:
+    - '/root/.npm/**/*'
+    - 'node_modules/**/*'
