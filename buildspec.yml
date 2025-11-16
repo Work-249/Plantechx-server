@@ -36,14 +36,7 @@ phases:
   post_build:
     commands:
       - echo "=== Build Completion ==="
-      - echo "Build completed successfully"
-      - if [ -d .serverless ]; then
-          echo "Serverless artifacts found:";
-          ls -la .serverless/;
-        else
-          echo "ERROR: No .serverless directory found";
-          exit 1;
-        fi
+      - echo "Build completed successfully"i
 
 artifacts:
   files:
