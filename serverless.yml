@@ -1,0 +1,29 @@
+service: academic-management-backend
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+  stage: prod
+  timeout: 20
+  memorySize: 512
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-tracing
+
+package:
+  patterns:
+    - "!node_modules/aws-sdk/**"

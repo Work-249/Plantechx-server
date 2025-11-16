@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Starting CodeBuild..."
+      - pwd
+      - ls -la
+      - echo "Installing Serverless v3 globally..."
+      - npm install -g serverless@3
+      - export PATH=$(npm bin -g):$PATH
+
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Current directory check..."
+      - pwd
+      - ls -la
+
+  build:
+    commands:
+      - echo "Installing dependencies..."
+      - npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - echo "Packaging and Deploying using Serverless..."
+      - serverless deploy --stage prod --verbose
+
+  post_build:
+    commands:
+      - echo "Deployment completed successfully."
+      - echo "Listing deployed artifacts..."
+      - if [ -d ".serverless" ]; then ls -la .serverless/; else echo "Warning: .serverless directory not found"; fi
+
+artifacts:
+  base-directory: .serverless
+  files:
+    - '**/*'
+  name: serverless-artifacts
