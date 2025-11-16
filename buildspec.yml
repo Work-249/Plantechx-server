@@ -13,8 +13,6 @@ phases:
       - echo "Checking serverless.yml file:"
       - cat serverless.yml
       - echo "=== End of serverless.yml ==="
-      - echo "Increasing file descriptor limit"
-      - ulimit -n 65536
       - echo "Installing all dependencies"
       - npm ci
       - echo "Checking serverless version:"
@@ -30,10 +28,10 @@ phases:
   post_build:
     commands:
       - echo "=== Build Completion ==="
-      - echo "Build completed successfully"i
+      - echo "Build completed successfully"
 
 artifacts:
   files:
-    - backend/.serverless/**/*
-    - backend/serverless.yml
+    - .serverless/**/*
+    - serverless.yml
   name: academic-management-backend-artifacts
