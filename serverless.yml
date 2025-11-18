@@ -37,9 +37,7 @@ package:
     - "routes/**"
     - "models/**"
     - "utils/**"
-    - "middleware/**"
-    - "uploads/**"
-    - "node_modules/**"
+    - "middleware/**"\
     # Keep existing exclusions to reduce package size
     - "!node_modules/aws-sdk/**"
     - "!node_modules/.bin/**"
