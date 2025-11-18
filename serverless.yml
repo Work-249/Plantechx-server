@@ -2,6 +2,9 @@
 service: academic-management-backend
 frameworkVersion: "3"
 
+plugins:
+  - serverless-webpack
+
 provider:
   name: aws
   runtime: nodejs20.x
@@ -10,9 +13,14 @@ provider:
   timeout: 20
   memorySize: 512
 
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    packager: npm
+
 functions:
   api:
-    handler: index.handler
+    handler: server.handler
     events:
       - httpApi:
           path: /{proxy+}
