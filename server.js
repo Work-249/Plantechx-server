@@ -1,5 +1,3 @@
-// server.js
-/*
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -161,41 +159,3 @@ module.exports.handler = serverless(app, {
     response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,POST,GET,PUT,PATCH,DELETE';
   }
 });
-*/
-
-
-// server.js
-const express = require("express");
-const app = express();
-const serverless= requrie('serverless-http')
-app.use(express.json());
-
-// POST → Static text response
-app.post("/", (req, res) => {
-  res.send("Static POST response");
-});
-
-// POST → Static JSON response
-app.post("/json", (req, res) => {
-  res.json({
-    status: "success",
-    message: "Static JSON POST response"
-  });
-});
-
-// POST → Static header response
-app.post("/header", (req, res) => {
-  res.set("X-Static-Message", "Static POST header");
-  res.send("Header added");
-});
-
-// POST → Example route returning fixed message
-app.post("/login", (req, res) => {
-  res.json({
-    status: "ok",
-    message: "Login feature is disabled (static response)"
-  });
-});
-
-// Start server
-module.exports.handler = serverless(app);
