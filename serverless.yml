@@ -12,7 +12,7 @@ provider:
 
 functions:
   api:
-    handler: server.handler
+    handler: index.handler
     events:
       - httpApi:
           path: /{proxy+}
@@ -23,6 +23,7 @@ package:
   patterns:
     # Include essential entry points and folders
     - "server.js"
+    - "index.js"
     - "package.json"
     - "config/**"
     - "routes/**"
