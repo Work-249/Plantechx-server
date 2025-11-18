@@ -12,20 +12,6 @@ provider:
   timeout: 20
   memorySize: 512
 
-custom:
-  webpack:
-    webpackConfig: webpack.config.js
-    packager: npm
-    includeModules: true
-
-functions:
-  api:
-    handler: server.handler
-    events:
-      - httpApi:
-          path: /{proxy+}
-          method: ANY
-
 package:
   individually: false
   patterns:
@@ -37,7 +23,9 @@ package:
     - "routes/**"
     - "models/**"
     - "utils/**"
-    - "middleware/**"\
+    - "middleware/**"
+    - "uploads/**"
+    - "node_modules/**"
     # Keep existing exclusions to reduce package size
     - "!node_modules/aws-sdk/**"
     - "!node_modules/.bin/**"
