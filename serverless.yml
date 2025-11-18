@@ -1,4 +1,3 @@
-
 service: academic-management-backend
 frameworkVersion: "3"
 
@@ -17,6 +16,7 @@ custom:
   webpack:
     webpackConfig: webpack.config.js
     packager: npm
+    includeModules: true
 
 functions:
   api:
