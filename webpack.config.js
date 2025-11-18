@@ -2,7 +2,7 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: './index.js',
+  entry: './server.js',
   target: 'node',
   mode: 'production',
   externals: [
@@ -16,7 +16,7 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs2',
     path: path.resolve(__dirname, '.webpack'),
-    filename: 'index.js',
+    filename: 'server.js',
   },
   resolve: {
     extensions: ['.js', '.json'],
