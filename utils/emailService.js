@@ -11,7 +11,7 @@ class EmailService {
     const environment = process.env.NODE_ENV || 'development';
 
     logger.info('Initializing Email Service', {
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+      host: process.env.EMAIL_HOST || 'smtp.zoho.com',
       port: emailPort,
       secure: isSecure,
       environment,
@@ -19,7 +19,7 @@ class EmailService {
     });
 
     this.transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+      host: process.env.EMAIL_HOST || 'smtp.zoho.com',
       port: emailPort,
       secure: isSecure,
       auth: {
