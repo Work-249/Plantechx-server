@@ -16,31 +16,6 @@ const logger = require('../middleware/logger');
 
 const router = express.Router();
 
-// Health endpoint to test SMTP/email configuration (Master Admin only)
-router.post('/email-test', auth, authorize('master_admin'), async (req, res) => {
-  try {
-    const to = req.body.to || process.env.MASTER_ADMIN_EMAIL;
-    const name = req.body.name || 'SMTP Test Recipient';
-    const message = req.body.message || 'This is a test email sent to verify SMTP configuration.';
-
-    if (!to) {
-      return res.status(400).json({ error: 'Recipient email required in body or MASTER_ADMIN_EMAIL env var must be set' });
-    }
-
-    // Use existing notification email helper to send a simple test message
-    const result = await emailService.sendNotificationEmail(to, name, 'SMTP Test Email', message, 'general', 'low', null);
-
-    if (result.success) {
-      return res.json({ success: true, message: `Test email sent to ${to}` });
-    }
-
-    return res.status(500).json({ success: false, error: result.error || 'Failed to send test email' });
-  } catch (error) {
-    logger.errorLog(error, { context: 'Admin email-test' });
-    return res.status(500).json({ error: 'Server error while sending test email' });
-  }
-});
-
 // Configure multer for file uploads (memory storage)
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -1484,9 +1459,9 @@ router.get('/student/reports', auth, authorize('student'), async (req, res) => {
           questionText: question.questionText,
           options: question.options,
           correctAnswer: question.correctAnswer,
-          studentAnswer: studentAnswer?.selectedAnswer || 'Not answered',
-          isCorrect: studentAnswer?.isCorrect || false,
-          marksObtained: studentAnswer?.marksObtained || 0,
+          studentAnswer: studentAnswer?.selectedAnswer,
+          isCorrect: studentAnswer?.isCorrect,
+          marksObtained: studentAnswer?.marksObtained,
           marks: question.marks
         };
       }) || []
@@ -1626,27 +1601,90 @@ router.post('/upload-image', auth, authorize('master_admin', 'faculty'), imageUp
 // Get all colleges (Master Admin only)
 router.get('/colleges', auth, authorize('master_admin'), async (req, res) => {
   try {
-    const colleges = await College.find({ isActive: true }).select('_id name code email adminId createdAt');
-    res.json(colleges);
+    const colleges = await College.find({ isActive: true })
+      .populate('adminId', 'name email hasLoggedIn lastLogin')
+      .sort({ createdAt: -1 });
+
+    const collegesWithStats = colleges.map(college => ({
+      id: college._id,
+      name: college.name,
+      code: college.code,
+      email: college.email,
+      address: college.address,
+      totalFaculty: college.totalFaculty || 0,
+      totalStudents: college.totalStudents || 0,
+      adminInfo: college.adminId ? {
+        name: college.adminId.name,
+        email: college.adminId.email,
+        hasLoggedIn: college.adminId.hasLoggedIn,
+        lastLogin: college.adminId.lastLogin
+      } : null,
+      createdAt: college.createdAt,
+      isActive: college.isActive
+    }));
+
+    res.json(collegesWithStats);
   } catch (error) {
-    logger.errorLog(error, { context: 'Get colleges error' });
+    logger.errorLog({
+      message: 'Get colleges error',
+      error: error.message,
+      stack: error.stack,
+      request: {
+        headers: req.headers,
+        query: req.query,
+        body: req.body
+      }
+    });
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Get admin dashboard stats (Master Admin only)
+// Get admin statistics (Master Admin only)
 router.get('/stats', auth, authorize('master_admin'), async (req, res) => {
   try {
-    const collegeCount = await College.countDocuments({ isActive: true });
-    const userCount = await User.countDocuments({ isActive: true });
-    const facultyCount = await User.countDocuments({ role: 'faculty', isActive: true });
-    const studentCount = await User.countDocuments({ role: 'student', isActive: true });
-    // Add more stats as needed
+    const [
+      totalColleges,
+      totalFaculty,
+      totalStudents,
+      totalTests,
+      activeTests,
+      completedTests,
+      recentLogins
+    ] = await Promise.all([
+      College.countDocuments({ isActive: true }),
+      User.countDocuments({ role: 'faculty', isActive: true }),
+      User.countDocuments({ role: 'student', isActive: true }),
+      Test.countDocuments({ isActive: true }),
+      Test.countDocuments({
+        isActive: true,
+        startDateTime: { $lte: new Date() },
+        endDateTime: { $gte: new Date() }
+      }),
+      TestAttempt.countDocuments({ status: 'completed' }),
+      User.find({
+        role: { $in: ['college_admin', 'faculty', 'student'] },
+        lastLogin: { $exists: true }
+      })
+      .select('name email role lastLogin collegeId')
+      .populate('collegeId', 'name')
+      .sort({ lastLogin: -1 })
+      .limit(10)
+    ]);
+
     res.json({
-      collegeCount,
-      userCount,
-      facultyCount,
-      studentCount
+      totalColleges,
+      totalFaculty,
+      totalStudents,
+      totalTests,
+      activeTests,
+      completedTests,
+      recentLogins: recentLogins.map(user => ({
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        lastLogin: user.lastLogin,
+        collegeId: user.collegeId
+      }))
     });
   } catch (error) {
     logger.errorLog(error, { context: 'Get admin stats error' });
