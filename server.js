@@ -134,7 +134,9 @@ setInterval(emitActiveCounts, 15 * 1000);
 emitActiveCounts();
 
 // Start server locally if not Lambda
-const PORT = process.env.PORT || 5000;
+// Default to 8080 to match common platform defaults (App Runner, Cloud Run, etc.).
+// If `PORT` is provided by the environment (App Runner), it will be used.
+const PORT = process.env.PORT || 8080;
 if (require.main === module) {
   server.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
