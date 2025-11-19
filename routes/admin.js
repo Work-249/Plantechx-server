@@ -183,6 +183,30 @@ router.get('/stats', auth, authorize('master_admin'), async (req, res) => {
   }
 });
 
+// Activity summary used by dashboard ActivitySummary component
+router.get('/metrics/activity-summary', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
+    const activeStudents = await User.countDocuments({ role: 'student', lastLogin: { $gte: fifteenMinutesAgo } });
+
+    // Admin login summary: sum of loginCount for master_admins and most recent login
+    const adminAgg = await User.aggregate([
+      { $match: { role: 'master_admin' } },
+      { $group: { _id: null, totalLogins: { $sum: '$loginCount' }, lastLogin: { $max: '$lastLogin' } } }
+    ]);
+
+    const adminLoginSummary = adminAgg && adminAgg.length > 0 ? {
+      totalLogins: adminAgg[0].totalLogins || 0,
+      lastLogin: adminAgg[0].lastLogin || null
+    } : { totalLogins: 0, lastLogin: null };
+
+    res.json({ activeStudents, adminLoginSummary });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Activity summary error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 // Create test (Master Admin only)
 router.post('/', auth, authorize('master_admin'), [
