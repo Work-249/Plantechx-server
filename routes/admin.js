@@ -16,6 +16,31 @@ const logger = require('../middleware/logger');
 
 const router = express.Router();
 
+// Health endpoint to test SMTP/email configuration (Master Admin only)
+router.post('/email-test', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const to = req.body.to || process.env.MASTER_ADMIN_EMAIL;
+    const name = req.body.name || 'SMTP Test Recipient';
+    const message = req.body.message || 'This is a test email sent to verify SMTP configuration.';
+
+    if (!to) {
+      return res.status(400).json({ error: 'Recipient email required in body or MASTER_ADMIN_EMAIL env var must be set' });
+    }
+
+    // Use existing notification email helper to send a simple test message
+    const result = await emailService.sendNotificationEmail(to, name, 'SMTP Test Email', message, 'general', 'low', null);
+
+    if (result.success) {
+      return res.json({ success: true, message: `Test email sent to ${to}` });
+    }
+
+    return res.status(500).json({ success: false, error: result.error || 'Failed to send test email' });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Admin email-test' });
+    return res.status(500).json({ error: 'Server error while sending test email' });
+  }
+});
+
 // Configure multer for file uploads (memory storage)
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -1595,6 +1620,37 @@ router.post('/upload-image', auth, authorize('master_admin', 'faculty'), imageUp
   } catch (error) {
     logger.errorLog(error, { context: 'Image upload error' });
     res.status(500).json({ error: 'Failed to upload image' });
+  }
+});
+
+// Get all colleges (Master Admin only)
+router.get('/colleges', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const colleges = await College.find({ isActive: true }).select('_id name code email adminId createdAt');
+    res.json(colleges);
+  } catch (error) {
+    logger.errorLog(error, { context: 'Get colleges error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Get admin dashboard stats (Master Admin only)
+router.get('/stats', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const collegeCount = await College.countDocuments({ isActive: true });
+    const userCount = await User.countDocuments({ isActive: true });
+    const facultyCount = await User.countDocuments({ role: 'faculty', isActive: true });
+    const studentCount = await User.countDocuments({ role: 'student', isActive: true });
+    // Add more stats as needed
+    res.json({
+      collegeCount,
+      userCount,
+      facultyCount,
+      studentCount
+    });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Get admin stats error' });
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
