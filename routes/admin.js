@@ -46,6 +46,144 @@ const fileUpload = multer({
   }
 });
 
+// --- Master Admin: Colleges management ---
+// Create a new college
+router.post('/colleges', auth, authorize('master_admin'), [
+  body('name').trim().isLength({ min: 2 }).withMessage('Name is required'),
+  body('code').trim().isLength({ min: 2 }).withMessage('Code is required'),
+  body('email').isEmail().withMessage('Valid email is required'),
+  body('address').trim().isLength({ min: 5 }).withMessage('Address is required')
+], async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ error: 'Validation failed', errors: errors.array() });
+    }
+
+    const { name, code, email, address } = req.body;
+
+    // Ensure unique code/email
+    const existing = await College.findOne({ $or: [ { code: code.toUpperCase() }, { email } ] });
+    if (existing) {
+      return res.status(400).json({ error: 'College with same code or email already exists' });
+    }
+
+    const college = new College({ name, code: code.toUpperCase(), email, address });
+    await college.save();
+
+    res.status(201).json({
+      id: college._id,
+      name: college.name,
+      code: college.code,
+      email: college.email,
+      address: college.address,
+      totalFaculty: college.totalFaculty || 0,
+      totalStudents: college.totalStudents || 0,
+      adminInfo: null,
+      createdAt: college.createdAt,
+      isActive: college.isActive
+    });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Create college error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// List colleges (Master Admin)
+router.get('/colleges', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const colleges = await College.find().sort({ createdAt: -1 }).populate('adminId', 'name email hasLoggedIn lastLogin');
+
+    const mapped = colleges.map(c => ({
+      id: c._id,
+      name: c.name,
+      code: c.code,
+      email: c.email,
+      address: c.address,
+      totalFaculty: c.totalFaculty || 0,
+      totalStudents: c.totalStudents || 0,
+      adminInfo: c.adminId ? {
+        name: c.adminId.name,
+        email: c.adminId.email,
+        hasLoggedIn: !!c.adminId.hasLoggedIn,
+        lastLogin: c.adminId.lastLogin
+      } : null,
+      createdAt: c.createdAt,
+      isActive: c.isActive
+    }));
+
+    res.json(mapped);
+  } catch (error) {
+    logger.errorLog(error, { context: 'List colleges error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Update college
+router.put('/colleges/:id', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = {};
+    ['name','code','email','address'].forEach(f => {
+      if (req.body[f] !== undefined) updates[f] = f === 'code' ? req.body[f].toUpperCase() : req.body[f];
+    });
+
+    const college = await College.findByIdAndUpdate(id, updates, { new: true, runValidators: true }).populate('adminId', 'name email hasLoggedIn lastLogin');
+    if (!college) return res.status(404).json({ error: 'College not found' });
+
+    res.json({ message: 'College updated', college });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Update college error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Toggle college active status
+router.put('/colleges/:id/toggle-status', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const { id } = req.params;
+    const college = await College.findById(id);
+    if (!college) return res.status(404).json({ error: 'College not found' });
+
+    college.isActive = !college.isActive;
+    await college.save();
+
+    // Recompute stats optionally
+    await college.updateStats();
+
+    res.json({ message: `College ${college.isActive ? 'activated' : 'deactivated'}`, isActive: college.isActive });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Toggle college status error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Admin stats for dashboard
+router.get('/stats', auth, authorize('master_admin'), async (req, res) => {
+  try {
+    const totalColleges = await College.countDocuments();
+    const totalFaculty = await User.countDocuments({ role: 'faculty', isActive: true });
+    const totalStudents = await User.countDocuments({ role: 'student', isActive: true });
+
+    const recentLogins = await User.find({ lastLogin: { $exists: true } })
+      .select('name email role lastLogin collegeId')
+      .populate('collegeId', 'name')
+      .sort({ lastLogin: -1 })
+      .limit(10);
+
+    res.json({
+      totalColleges,
+      totalFaculty,
+      totalStudents,
+      recentLogins
+    });
+  } catch (error) {
+    logger.errorLog(error, { context: 'Admin stats error' });
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+
 // Create test (Master Admin only)
 router.post('/', auth, authorize('master_admin'), [
   // Add debug logging for request body
@@ -1459,9 +1597,9 @@ router.get('/student/reports', auth, authorize('student'), async (req, res) => {
           questionText: question.questionText,
           options: question.options,
           correctAnswer: question.correctAnswer,
-          studentAnswer: studentAnswer?.selectedAnswer,
-          isCorrect: studentAnswer?.isCorrect,
-          marksObtained: studentAnswer?.marksObtained,
+          studentAnswer: studentAnswer?.selectedAnswer || 'Not answered',
+          isCorrect: studentAnswer?.isCorrect || false,
+          marksObtained: studentAnswer?.marksObtained || 0,
           marks: question.marks
         };
       }) || []
@@ -1595,100 +1733,6 @@ router.post('/upload-image', auth, authorize('master_admin', 'faculty'), imageUp
   } catch (error) {
     logger.errorLog(error, { context: 'Image upload error' });
     res.status(500).json({ error: 'Failed to upload image' });
-  }
-});
-
-// Get all colleges (Master Admin only)
-router.get('/colleges', auth, authorize('master_admin'), async (req, res) => {
-  try {
-    const colleges = await College.find({ isActive: true })
-      .populate('adminId', 'name email hasLoggedIn lastLogin')
-      .sort({ createdAt: -1 });
-
-    const collegesWithStats = colleges.map(college => ({
-      id: college._id,
-      name: college.name,
-      code: college.code,
-      email: college.email,
-      address: college.address,
-      totalFaculty: college.totalFaculty || 0,
-      totalStudents: college.totalStudents || 0,
-      adminInfo: college.adminId ? {
-        name: college.adminId.name,
-        email: college.adminId.email,
-        hasLoggedIn: college.adminId.hasLoggedIn,
-        lastLogin: college.adminId.lastLogin
-      } : null,
-      createdAt: college.createdAt,
-      isActive: college.isActive
-    }));
-
-    res.json(collegesWithStats);
-  } catch (error) {
-    logger.errorLog({
-      message: 'Get colleges error',
-      error: error.message,
-      stack: error.stack,
-      request: {
-        headers: req.headers,
-        query: req.query,
-        body: req.body
-      }
-    });
-    res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// Get admin statistics (Master Admin only)
-router.get('/stats', auth, authorize('master_admin'), async (req, res) => {
-  try {
-    const [
-      totalColleges,
-      totalFaculty,
-      totalStudents,
-      totalTests,
-      activeTests,
-      completedTests,
-      recentLogins
-    ] = await Promise.all([
-      College.countDocuments({ isActive: true }),
-      User.countDocuments({ role: 'faculty', isActive: true }),
-      User.countDocuments({ role: 'student', isActive: true }),
-      Test.countDocuments({ isActive: true }),
-      Test.countDocuments({
-        isActive: true,
-        startDateTime: { $lte: new Date() },
-        endDateTime: { $gte: new Date() }
-      }),
-      TestAttempt.countDocuments({ status: 'completed' }),
-      User.find({
-        role: { $in: ['college_admin', 'faculty', 'student'] },
-        lastLogin: { $exists: true }
-      })
-      .select('name email role lastLogin collegeId')
-      .populate('collegeId', 'name')
-      .sort({ lastLogin: -1 })
-      .limit(10)
-    ]);
-
-    res.json({
-      totalColleges,
-      totalFaculty,
-      totalStudents,
-      totalTests,
-      activeTests,
-      completedTests,
-      recentLogins: recentLogins.map(user => ({
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        lastLogin: user.lastLogin,
-        collegeId: user.collegeId
-      }))
-    });
-  } catch (error) {
-    logger.errorLog(error, { context: 'Get admin stats error' });
-    res.status(500).json({ error: 'Server error' });
   }
 });
 
