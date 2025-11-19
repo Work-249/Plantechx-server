@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const logger = require('../middleware/logger');
+const PendingEmail = require('../models/PendingEmail');
 
 class EmailService {
   constructor() {
@@ -74,7 +75,7 @@ class EmailService {
     }
   }
 
-  async sendWithRetry(mailOptions, retries = this.maxRetries) {
+  async sendWithRetry(mailOptions, meta = {}, retries = this.maxRetries) {
     if (!this.isConfigured) {
       logger.warn('Email service not configured - skipping email send', logger.sanitizeMeta(mailOptions));
       return {
@@ -97,6 +98,26 @@ class EmailService {
           logger.info(`Retrying email send in ${delay}ms...`, { attempt: attempt + 1, maxRetries: retries });
           await new Promise(resolve => setTimeout(resolve, delay));
         } else {
+          // Persist failed email to PendingEmail collection (best-effort)
+          try {
+            const recipient = String(mailOptions.to || '').trim();
+            const recipientName = meta.recipientName || (meta.data && meta.data.recipientName) || recipient.split('@')[0];
+            await PendingEmail.create({
+              type: meta.type || (meta.data && meta.data.type) || 'notification',
+              recipientEmail: recipient,
+              recipientName: recipientName,
+              userId: meta.userId || undefined,
+              data: Object.assign({ subject: mailOptions.subject }, meta.data || {}, { html: mailOptions.html }),
+              status: 'failed',
+              attempts: retries,
+              lastAttemptAt: new Date(),
+              error: error.message
+            });
+            logger.info('Persisted failed email to PendingEmail', { to: logger.maskEmail(recipient), type: meta.type || 'notification' });
+          } catch (persistErr) {
+            logger.errorLog(persistErr, { context: 'Persist failed email', to: logger.maskEmail(mailOptions.to) });
+          }
+
           return {
             success: false,
             error: error.message,
@@ -163,7 +184,12 @@ class EmailService {
       `
     };
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'login_credentials',
+      recipientName: userName,
+      userId: null,
+      data: { email: userEmail, password, role, collegeName }
+    });
 
     if (result.success) {
       return { success: true };
@@ -218,7 +244,11 @@ class EmailService {
       `
     };
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'password_reset',
+      recipientName: userName,
+      data: { resetUrl }
+    });
 
     if (result.success) {
       return { success: true };
@@ -283,7 +313,11 @@ class EmailService {
       `
     };
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'test_assignment',
+      recipientName: collegeAdminName,
+      data: { testName, collegeName, startDateTime, endDateTime }
+    });
 
     if (result.success) {
       return { success: true };
@@ -329,7 +363,11 @@ class EmailService {
       `
     };
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'college_created',
+      recipientName: adminName,
+      data: Object.assign({ collegeName }, additionalInfo)
+    });
     if (result.success) return { success: true };
     return { success: false, error: result.error };
   }
@@ -382,7 +420,11 @@ class EmailService {
       `
     };
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'test_assignment',
+      recipientName: studentName,
+      data: { testName, startDateTime, endDateTime, duration }
+    });
 
     if (result.success) {
       return { success: true };
@@ -462,7 +504,11 @@ class EmailService {
       ];
     }
 
-    const result = await this.sendWithRetry(mailOptions);
+    const result = await this.sendWithRetry(mailOptions, {
+      type: 'notification',
+      recipientName: userName,
+      data: { title, message, type, priority }
+    });
 
     if (result.success) {
       return { success: true };
