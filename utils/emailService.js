@@ -11,7 +11,7 @@ class EmailService {
     const environment = process.env.NODE_ENV || 'development';
 
     logger.info('Initializing Email Service', {
-      host: process.env.EMAIL_HOST || 'smtp.zoho.com',
+      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
       port: emailPort,
       secure: isSecure,
       environment,
@@ -19,7 +19,7 @@ class EmailService {
     });
 
     this.transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST || 'smtp.zoho.com',
+      host: process.env.EMAIL_HOST || 'smtp.gmail.com',
       port: emailPort,
       secure: isSecure,
       auth: {
@@ -50,6 +50,15 @@ class EmailService {
     } else {
       logger.warn('Email service not configured - missing EMAIL_USER or EMAIL_PASS environment variables');
     }
+  }
+
+  // Basic email validation to catch obvious malformed addresses
+  isValidEmail(email) {
+    if (!email || typeof email !== 'string') return false;
+    const trimmed = email.trim();
+    // Simple RFC-like regex that allows dots in local part
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(trimmed);
   }
 
   async verifyConnection() {
@@ -110,9 +119,15 @@ class EmailService {
 
     const roleText = this.getRoleDisplayName(role);
     
+    const toAddress = String(userEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send Login Credentials - invalid email', to: logger.maskEmail(userEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: userEmail,
+      to: toAddress,
       subject: `Login Credentials - ${roleText} Account Created`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -167,11 +182,17 @@ class EmailService {
   async sendPasswordReset(userEmail, userName, resetToken) {
   logger.info('Sending password reset email', { to: logger.maskEmail(userEmail) });
     
+    const toAddress = String(userEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send Password Reset - invalid email', to: logger.maskEmail(userEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
     
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: userEmail,
+      to: toAddress,
       subject: 'Password Reset Request - Academic Management System',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -220,9 +241,15 @@ class EmailService {
   async sendTestAssignmentNotification(collegeEmail, collegeAdminName, testName, collegeName, startDateTime, endDateTime) {
   logger.info('Sending test assignment notification', Object.assign({ testName, collegeName }, { to: logger.maskEmail(collegeEmail) }));
     
+    const toAddress = String(collegeEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send Test Assignment - invalid email', to: logger.maskEmail(collegeEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: collegeEmail,
+      to: toAddress,
       subject: `New Test Assignment - ${testName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -269,9 +296,15 @@ class EmailService {
   async sendCollegeCreated(collegeEmail, collegeName, adminName, additionalInfo = {}) {
   logger.info('Sending college creation confirmation email', { to: logger.maskEmail(collegeEmail) });
 
+    const toAddress = String(collegeEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send College Created - invalid email', to: logger.maskEmail(collegeEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: collegeEmail,
+      to: toAddress,
       subject: `Welcome to Academic Management - ${collegeName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -304,9 +337,15 @@ class EmailService {
   async sendTestAssignmentToStudent(studentEmail, studentName, testName, startDateTime, endDateTime, duration) {
   logger.info('Sending test assignment to student', Object.assign({ testName }, { to: logger.maskEmail(studentEmail) }));
     
+    const toAddress = String(studentEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send Test Assignment To Student - invalid email', to: logger.maskEmail(studentEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: studentEmail,
+      to: toAddress,
       subject: `Test Assignment - ${testName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -354,8 +393,13 @@ class EmailService {
   }
 
   async sendNotificationEmail(userEmail, userName, title, message, type = 'general', priority = 'medium', attachment = null) {
-  logger.info('Sending notification email', Object.assign({ title, type, priority }, { to: logger.maskEmail(userEmail) }));
-    
+    logger.info('Sending notification email', Object.assign({ title, type, priority }, { to: logger.maskEmail(userEmail) }));
+    const toAddress = String(userEmail || '').trim();
+    if (!this.isValidEmail(toAddress)) {
+      logger.errorLog(new Error('Invalid recipient email'), { context: 'Send Notification - invalid email', to: logger.maskEmail(userEmail) });
+      return { success: false, error: 'Invalid recipient email' };
+    }
+
     const priorityColors = {
       low: '#10B981',
       medium: '#3B82F6', 
@@ -371,7 +415,7 @@ class EmailService {
     
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: userEmail,
+      to: toAddress,
       subject: `${typeIcons[type] || '📢'} ${title}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
