@@ -6,6 +6,9 @@ const serverless = require('serverless-http');
 const http = require('http');
 require('dotenv').config();
 
+// Bootstrap log to make startup visible in container logs
+console.log('➡️  Starting server bootstrap... NODE_ENV=', process.env.NODE_ENV);
+
 // Database connection
 const connectDB = require('./config/database');
 connectDB();
@@ -136,13 +139,25 @@ emitActiveCounts();
 // Start server locally if not Lambda
 // Default to 8080 to match common platform defaults (App Runner, Cloud Run, etc.).
 // If `PORT` is provided by the environment (App Runner), it will be used.
-const PORT = process.env.PORT || 8080;
+const PORT = parseInt(process.env.PORT, 10) || 8080;
+const HOST = '0.0.0.0'; // ensure binding to external interface
+
 if (require.main === module) {
-  server.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+  server.listen(PORT, HOST, () => {
+    console.log(`🚀 Server running on ${HOST}:${PORT}`);
     console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 }
+
+// Crash handlers so we can see errors in logs and let the platform restart the container
+process.on('uncaughtException', (err) => {
+  console.error('UNCAUGHT EXCEPTION:', err && err.stack ? err.stack : err);
+  process.exit(1);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('UNHANDLED REJECTION:', reason);
+  process.exit(1);
+});
 
 // Export for AWS Lambda with proper Express app support
 // This wraps the Express app to handle Lambda events
