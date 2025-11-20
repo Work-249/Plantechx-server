@@ -5,25 +5,45 @@ env:
     NODE_ENV: development
 
 phases:
+  install:
+    commands:
+      - echo "=== Installing Dependencies ==="
+      - npm install --legacy-peer-deps || npm install
+      
   pre_build:
     commands:
-      - echo "=== Build Environment Setup ==="
-      - echo "Repository structure:"
-      - ls -la
-      - echo "Checking serverless.yml file:"
-      - cat serverless.yml
-      - echo "=== End of serverless.yml ==="
-      - echo "Installing all dependencies"
-      - npm install
-      - echo "Checking serverless version:"
-      - npx serverless --version
-      - echo "Validating serverless.yml syntax with detailed output:"
-      - npx serverless print --stage prod --region ap-south-1 --verbose
+      - echo "=== Environment Setup ==="
+      - ulimit -n 4096
+      - echo "File descriptor limit set to $(ulimit -n)"
+      - |
+        if [ "$STAGE" = "test" ]; then
+          echo "=== Running Tests ==="
+          npm test
+        else
+          echo "=== Build Environment Setup ==="
+          echo "Repository structure:"
+          ls -la
+          echo "Checking serverless.yml file:"
+          cat serverless.yml
+          echo "=== End of serverless.yml ==="
+          echo "Installing serverless globally"
+          npm install -g serverless
+          echo "Checking serverless version:"
+          serverless --version
+          echo "Validating serverless.yml syntax with detailed output:"
+          serverless print --stage prod --region ap-south-1 --verbose
+        fi
       
   build:
     commands:
-      - echo "=== Building Serverless Application ==="
-      - npx serverless package --stage prod --region ap-south-1 --verbose
+      - |
+        if [ "$STAGE" != "test" ]; then
+          echo "=== Building Serverless Application ==="
+          ulimit -n 4096
+          npx serverless package --stage prod --region ap-south-1 --verbose
+        else
+          echo "=== Tests Completed ==="
+        fi
       
   post_build:
     commands:
@@ -34,4 +54,4 @@ artifacts:
   files:
     - .serverless/**/*
     - serverless.yml
-  name: academic-management-backend-artifacts
+  name: Plantechx-artifacts
