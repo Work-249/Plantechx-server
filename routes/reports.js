@@ -625,4 +625,18 @@ router.get('/faculty/hierarchical', auth, authorize('faculty'), async (req, res)
   }
 });
 
+// Utility: Remove orphaned TestAttempt documents (no valid test)
+const removeOrphanedAttempts = async () => {
+  const attempts = await TestAttempt.find({});
+  for (const attempt of attempts) {
+    const test = await Test.findById(attempt.testId);
+    if (!test || !test.isActive) {
+      await TestAttempt.deleteOne({ _id: attempt._id });
+    }
+  }
+};
+
+// Optionally call this utility on server start or via an admin endpoint
+// removeOrphanedAttempts();
+
 module.exports = router;
