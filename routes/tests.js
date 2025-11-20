@@ -1379,7 +1379,10 @@ router.delete('/:id', auth, authorize('master_admin'), async (req, res) => {
       TestAttempt.updateMany(
         { testId },
         { $set: { isActive: false } }
-      )
+      ),
+      // Also soft delete all related reports (if reports are stored in TestAttempt or a separate collection)
+      // If reports are a separate collection, add:
+      // Report.updateMany({ testId }, { $set: { isActive: false } })
     ]);
 
     res.json({ message: 'Test deleted successfully' });
