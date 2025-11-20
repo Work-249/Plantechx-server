@@ -1,4 +1,4 @@
-service: academic-management-backend
+service: Plantechx
 frameworkVersion: "3"
 
 plugins:
@@ -24,8 +24,7 @@ package:
     - "models/**"
     - "utils/**"
     - "middleware/**"
-    - "uploads/**"
-    - "node_modules/**"
+    - ".webpack/**"
     # Keep existing exclusions to reduce package size
     - "!node_modules/aws-sdk/**"
     - "!node_modules/.bin/**"
