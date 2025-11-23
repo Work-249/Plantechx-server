@@ -11,7 +11,51 @@ console.log('➡️  Starting server bootstrap... NODE_ENV=', process.env.NODE_E
 
 // Database connection
 const connectDB = require('./config/database');
-connectDB();
+
+// Defer starting parts of the app that require DB until connectDB resolves.
+const startServer = async () => {
+  try {
+    const conn = await connectDB();
+    console.log('✅ Database connection established, proceeding with server startup');
+
+    // Periodically calculate active student count and publish via a pluggable publisher.
+    const User = require('./models/User');
+    // pluggable publisher; if you later add a publish utility (e.g., to API Gateway Management API), set this function.
+    const publishActivityUpdate = global.publishActivityUpdate || (async (payload) => {
+      // Default: just log the activity update when no real-time system is configured
+      console.log('activity:update', payload);
+    });
+
+    const emitActiveCounts = async () => {
+      try {
+        const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
+        const activeStudents = await User.countDocuments({ role: 'student', lastLogin: { $gte: fifteenMinutesAgo } });
+        await publishActivityUpdate({ activeStudents });
+      } catch (err) {
+        logger.errorLog(err, { context: 'Failed to compute active counts' });
+      }
+    };
+    // Start periodic job only after DB connected
+    setInterval(emitActiveCounts, 15 * 1000);
+    emitActiveCounts();
+
+    // Start server listening only after DB is connected
+    server.listen(PORT, HOST, () => {
+      console.log(`🚀 Server running on ${HOST}:${PORT}`);
+      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    });
+
+  } catch (err) {
+    // Log full error so App Runner / platform logs contain the cause
+    console.error('FATAL: Database connection failed during startup:', err && err.stack ? err.stack : err);
+    logger.errorLog(err, { context: 'Startup - DB connection failed' });
+    // Exit with non-zero so platform can detect failure and surface logs
+    process.exit(1);
+  }
+};
+
+// Kick off start sequence
+startServer();
 
 // Logger middleware
 const logger = require('./middleware/logger');
@@ -149,6 +193,9 @@ const emitActiveCounts = async () => {
 setInterval(emitActiveCounts, 15 * 1000);
 emitActiveCounts();
 
+// Start server locally if not Lambda
+// Default to 8080 to match common platform defaults (App Runner, Cloud Run, etc.).
+// If `PORT` is provided by the environment (App Runner), it will be used.
 const PORT = parseInt(process.env.PORT, 10) || 8080;
 const HOST = '0.0.0.0'; // ensure binding to external interface
 
@@ -164,10 +211,7 @@ if (require.main === module) {
     process.exit(1);
   });
 
-  server.listen(PORT, HOST, () => {
-    console.log(`🚀 Server running on ${HOST}:${PORT}`);
-    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-  });
+  // When run directly we start via startServer() which will wait for DB connection
 }
 
 // Crash handlers so we can see errors in logs and let the platform restart the container
