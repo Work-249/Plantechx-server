@@ -32,23 +32,12 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'https://main.daqm1aijotilg.amplifyapp.com',
-  process.env.FRONTEND_URL
-].filter(Boolean);
-
+// CORS configuration — allow all origins
+// WARNING: When using a wildcard origin, cookies and credentials cannot be used.
+// Set `credentials: true` only when specifying explicit allowed origins.
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    if (process.env.NODE_ENV === 'development' && origin.includes('localhost')) return callback(null, true);
-    if (allowedOrigins.includes(origin)) return callback(null, true);
-    console.warn(`🚫 CORS blocked for origin: ${origin}`);
-    return callback(null, true); // allow but log
-  },
-  credentials: true,
+  origin: '*',
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   exposedHeaders: ['Authorization', 'Content-Length', 'X-Request-Id'],
