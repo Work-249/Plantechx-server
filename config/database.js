@@ -6,7 +6,7 @@ const connectDB = async () => {
     logger.info('Attempting to connect to MongoDB', {
       uri: process.env.MONGODB_URI ? 'URI provided' : 'URI missing'
     });
-    
+
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -17,13 +17,17 @@ const connectDB = async () => {
       database: conn.connection.name,
       port: conn.connection.port
     });
-    
+
     // Create master admin if it doesn't exist
     await createMasterAdmin();
-    
+
+    // Return the mongoose connection for callers to await
+    return conn;
   } catch (error) {
+    // Log full error including stack so platform logs capture the cause
     logger.errorLog(error, { context: 'Database Connection' });
-    process.exit(1);
+    // Re-throw the error so callers can handle it (do not exit here)
+    throw error;
   }
 };
 
