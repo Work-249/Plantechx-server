@@ -88,6 +88,32 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Readiness and liveness endpoints for HTTP health checks (App Runner)
+const mongoose = require('mongoose');
+const emailService = require('./utils/emailService');
+
+// Liveness: service process is alive
+app.get('/health', (req, res) => {
+  res.json({ status: 'UP', timestamp: new Date().toISOString() });
+});
+
+// Readiness: check external dependencies (MongoDB, optional email config)
+app.get('/health/ready', (req, res) => {
+  const dbState = mongoose.connection.readyState; // 1 = connected
+  const dbConnected = dbState === 1;
+  const emailConfigured = emailService && emailService.isConfigured;
+
+  const details = {
+    db: dbConnected ? 'connected' : `not-connected (state=${dbState})`,
+    email: emailConfigured ? 'configured' : 'not-configured'
+  };
+
+  if (dbConnected) {
+    return res.json({ status: 'READY', details, timestamp: new Date().toISOString() });
+  }
+  return res.status(503).json({ status: 'NOT_READY', details, timestamp: new Date().toISOString() });
+});
+
 // 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
@@ -104,8 +130,6 @@ app.use((err, req, res, next) => {
 // Create HTTP server (used when running locally)
 const server = http.createServer(app);
 
-// NOTE: Socket.IO removed — using AWS WebSocket API or other mechanism is recommended for production.
-// Periodically calculate active student count and publish via a pluggable publisher.
 const User = require('./models/User');
 // pluggable publisher; if you later add a publish utility (e.g., to API Gateway Management API), set this function.
 const publishActivityUpdate = global.publishActivityUpdate || (async (payload) => {
@@ -125,13 +149,21 @@ const emitActiveCounts = async () => {
 setInterval(emitActiveCounts, 15 * 1000);
 emitActiveCounts();
 
-// Start server locally if not Lambda
-// Default to 8080 to match common platform defaults (App Runner, Cloud Run, etc.).
-// If `PORT` is provided by the environment (App Runner), it will be used.
 const PORT = parseInt(process.env.PORT, 10) || 8080;
 const HOST = '0.0.0.0'; // ensure binding to external interface
 
 if (require.main === module) {
+  // Attach error handler to surface port binding problems clearly
+  server.on('error', (err) => {
+    if (err && err.code === 'EADDRINUSE') {
+      console.error('FATAL: Port already in use:', PORT);
+      console.error('This prevents the server from starting. Ensure no other process is listening on this port, or change `PORT` in your environment.');
+      process.exit(1);
+    }
+    console.error('Server error during startup:', err);
+    process.exit(1);
+  });
+
   server.listen(PORT, HOST, () => {
     console.log(`🚀 Server running on ${HOST}:${PORT}`);
     console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
