@@ -12,6 +12,8 @@ require('dotenv').config();
 console.log('➡️  Starting server bootstrap... NODE_ENV=', process.env.NODE_ENV);
 console.log('📁 Working directory:', process.cwd());
 console.log('🔎 NODE_PATH:', process.env.NODE_PATH || '(not set)');
+console.log('🔐 ALLOWED_ORIGINS:', process.env.ALLOWED_ORIGINS || '(not set)');
+console.log('🔐 ALLOW_CREDENTIALS:', process.env.ALLOW_CREDENTIALS || '(not set)');
 
 // Initialize logger FIRST before anything that uses it
 const logger = require('./middleware/logger');
@@ -40,12 +42,22 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration — allow all origins
+// CORS configuration — allow explicit origins when provided
 // WARNING: When using a wildcard origin, cookies and credentials cannot be used.
-// Set `credentials: true` only when specifying explicit allowed origins.
+// Use ALLOWED_ORIGINS env var (comma-separated) in production and set ALLOW_CREDENTIALS=true only if needed.
+const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
+const allowedOrigins = allowedOriginsEnv ? allowedOriginsEnv.split(',').map(s => s.trim()) : null;
+const allowCredentials = process.env.ALLOW_CREDENTIALS === 'true';
+
 const corsOptions = {
-  origin: '*',
-  credentials: false,
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g., curl, server-to-server)
+    if (!origin) return callback(null, true);
+    if (!allowedOrigins) return callback(null, true); // allow all
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('CORS origin denied'));
+  },
+  credentials: allowCredentials,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   exposedHeaders: ['Authorization', 'Content-Length', 'X-Request-Id'],
@@ -88,6 +100,24 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Debugging incoming requests
 app.use((req, res, next) => {
   console.log('👉 Request Origin:', req.headers.origin || 'No origin');
+  next();
+});
+
+// Log response headers for auth endpoints to help debug missing CORS headers
+app.use((req, res, next) => {
+  // Only attach for auth-related paths to reduce noise
+  const shouldLog = req.path.startsWith('/api/auth') || req.path === '/api/auth' || req.path === '/auth';
+  if (shouldLog) {
+    res.on('finish', () => {
+      try {
+        const headers = res.getHeaders ? res.getHeaders() : '(no headers)';
+        console.log(`📤 Response for ${req.method} ${req.originalUrl} — status ${res.statusCode}`);
+        console.log('📤 Response headers:', headers);
+      } catch (err) {
+        console.error('Failed to read response headers for logging', err && err.message ? err.message : err);
+      }
+    });
+  }
   next();
 });
 
@@ -243,8 +273,21 @@ module.exports.handler = serverless(app, {
     if (!response.headers) {
       response.headers = {};
     }
-    response.headers['Access-Control-Allow-Origin'] = '*';
+    // Mirror runtime CORS settings to Lambda responses
+    const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
+    const allowedOrigins = allowedOriginsEnv ? allowedOriginsEnv.split(',').map(s => s.trim()) : null;
+    const allowCredentials = process.env.ALLOW_CREDENTIALS === 'true';
+
+    // If allowedOrigins is set, use the request origin if allowed; otherwise use wildcard
+    const origin = (event && event.headers && (event.headers.origin || event.headers.Origin)) || '*';
+    if (allowedOrigins && origin && allowedOrigins.includes(origin)) {
+      response.headers['Access-Control-Allow-Origin'] = origin;
+    } else if (!allowedOrigins) {
+      response.headers['Access-Control-Allow-Origin'] = '*';
+    }
+
     response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization,X-Requested-With,Accept';
     response.headers['Access-Control-Allow-Methods'] = 'OPTIONS,POST,GET,PUT,PATCH,DELETE';
+    if (allowCredentials) response.headers['Access-Control-Allow-Credentials'] = 'true';
   }
 });
