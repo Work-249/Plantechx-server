@@ -4,62 +4,26 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const serverless = require('serverless-http');
 const http = require('http');
+const path = require('path');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 // Bootstrap log to make startup visible in container logs
 console.log('➡️  Starting server bootstrap... NODE_ENV=', process.env.NODE_ENV);
+console.log('📁 Working directory:', process.cwd());
+console.log('🔎 NODE_PATH:', process.env.NODE_PATH || '(not set)');
+
+// Initialize logger FIRST before anything that uses it
+const logger = require('./middleware/logger');
 
 // Database connection
 const connectDB = require('./config/database');
 
-// Defer starting parts of the app that require DB until connectDB resolves.
-const startServer = async () => {
-  try {
-    const conn = await connectDB();
-    console.log('✅ Database connection established, proceeding with server startup');
+// Get configuration
+const PORT = parseInt(process.env.PORT, 10) || 8080;
+const HOST = '0.0.0.0'; // ensure binding to external interface
 
-    // Periodically calculate active student count and publish via a pluggable publisher.
-    const User = require('./models/User');
-    // pluggable publisher; if you later add a publish utility (e.g., to API Gateway Management API), set this function.
-    const publishActivityUpdate = global.publishActivityUpdate || (async (payload) => {
-      // Default: just log the activity update when no real-time system is configured
-      console.log('activity:update', payload);
-    });
-
-    const emitActiveCounts = async () => {
-      try {
-        const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
-        const activeStudents = await User.countDocuments({ role: 'student', lastLogin: { $gte: fifteenMinutesAgo } });
-        await publishActivityUpdate({ activeStudents });
-      } catch (err) {
-        logger.errorLog(err, { context: 'Failed to compute active counts' });
-      }
-    };
-    // Start periodic job only after DB connected
-    setInterval(emitActiveCounts, 15 * 1000);
-    emitActiveCounts();
-
-    // Start server listening only after DB is connected
-    server.listen(PORT, HOST, () => {
-      console.log(`🚀 Server running on ${HOST}:${PORT}`);
-      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-    });
-
-  } catch (err) {
-    // Log full error so App Runner / platform logs contain the cause
-    console.error('FATAL: Database connection failed during startup:', err && err.stack ? err.stack : err);
-    logger.errorLog(err, { context: 'Startup - DB connection failed' });
-    // Exit with non-zero so platform can detect failure and surface logs
-    process.exit(1);
-  }
-};
-
-// Kick off start sequence
-startServer();
-
-// Logger middleware
-const logger = require('./middleware/logger');
-
+// Create Express app
 const app = express();
 
 // Trust proxy (for rate-limiting behind API Gateway / Vercel)
@@ -88,6 +52,34 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+
+// Ensure CORS headers are present on every response — helpful for debugging
+app.use((req, res, next) => {
+  const origin = req.headers.origin || '*';
+
+  // If ALLOWED_ORIGINS is set, only echo back allowed origins.
+  if (process.env.ALLOWED_ORIGINS) {
+    const allowed = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
+    if (allowed.includes(origin)) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+
+  res.setHeader('Access-Control-Allow-Headers', (corsOptions.allowedHeaders || []).join(','));
+  res.setHeader('Access-Control-Allow-Methods', (corsOptions.methods || []).join(','));
+
+  // Do not set Access-Control-Allow-Credentials unless explicitly required
+  if (process.env.ALLOW_CREDENTIALS === 'true') {
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  }
+
+  // Short-circuit OPTIONS requests with OK so preflight always succeeds
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+
+  next();
+});
 
 // Body parser
 app.use(express.json({ limit: '10mb' }));
@@ -120,7 +112,6 @@ app.get('/', (req, res) => {
 });
 
 // Serve uploaded files
-const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Health check
@@ -132,8 +123,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Readiness and liveness endpoints for HTTP health checks (App Runner)
-const mongoose = require('mongoose');
+// Email service - require after app is configured
 const emailService = require('./utils/emailService');
 
 // Liveness: service process is alive
@@ -174,44 +164,61 @@ app.use((err, req, res, next) => {
 // Create HTTP server (used when running locally)
 const server = http.createServer(app);
 
-const User = require('./models/User');
-// pluggable publisher; if you later add a publish utility (e.g., to API Gateway Management API), set this function.
-const publishActivityUpdate = global.publishActivityUpdate || (async (payload) => {
-  // Default: just log the activity update when no real-time system is configured
-  console.log('activity:update', payload);
+// Attach error handler to surface port binding problems clearly
+server.on('error', (err) => {
+  if (err && err.code === 'EADDRINUSE') {
+    console.error('FATAL: Port already in use:', PORT);
+    console.error('This prevents the server from starting. Ensure no other process is listening on this port, or change `PORT` in your environment.');
+    process.exit(1);
+  }
+  console.error('Server error during startup:', err);
+  process.exit(1);
 });
 
-const emitActiveCounts = async () => {
+// Startup sequence: wait for DB, then start server
+const startServer = async () => {
   try {
-    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
-    const activeStudents = await User.countDocuments({ role: 'student', lastLogin: { $gte: fifteenMinutesAgo } });
-    await publishActivityUpdate({ activeStudents });
+    const conn = await connectDB();
+    console.log('✅ Database connection established, proceeding with server startup');
+
+    // Set up periodic activity tracking
+    const User = require('./models/User');
+    const publishActivityUpdate = global.publishActivityUpdate || (async (payload) => {
+      console.log('activity:update', payload);
+    });
+
+    const emitActiveCounts = async () => {
+      try {
+        const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
+        const activeStudents = await User.countDocuments({ role: 'student', lastLogin: { $gte: fifteenMinutesAgo } });
+        await publishActivityUpdate({ activeStudents });
+      } catch (err) {
+        logger.errorLog(err, { context: 'Failed to compute active counts' });
+      }
+    };
+
+    // Start periodic job only after DB connected
+    setInterval(emitActiveCounts, 15 * 1000);
+    emitActiveCounts();
+
+    // Start listening only after DB is connected
+    server.listen(PORT, HOST, () => {
+      console.log(`🚀 Server running on ${HOST}:${PORT}`);
+      console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    });
+
   } catch (err) {
-    logger.errorLog(err, { context: 'Failed to compute active counts' });
+    // Log full error so App Runner / platform logs contain the cause
+    console.error('FATAL: Database connection failed during startup:', err && err.stack ? err.stack : err);
+    logger.errorLog(err, { context: 'Startup - DB connection failed' });
+    // Exit with non-zero so platform can detect failure and surface logs
+    process.exit(1);
   }
 };
-setInterval(emitActiveCounts, 15 * 1000);
-emitActiveCounts();
 
-// Start server locally if not Lambda
-// Default to 8080 to match common platform defaults (App Runner, Cloud Run, etc.).
-// If `PORT` is provided by the environment (App Runner), it will be used.
-const PORT = parseInt(process.env.PORT, 10) || 8080;
-const HOST = '0.0.0.0'; // ensure binding to external interface
-
+// Only start if running directly (not imported as module)
 if (require.main === module) {
-  // Attach error handler to surface port binding problems clearly
-  server.on('error', (err) => {
-    if (err && err.code === 'EADDRINUSE') {
-      console.error('FATAL: Port already in use:', PORT);
-      console.error('This prevents the server from starting. Ensure no other process is listening on this port, or change `PORT` in your environment.');
-      process.exit(1);
-    }
-    console.error('Server error during startup:', err);
-    process.exit(1);
-  });
-
-  // When run directly we start via startServer() which will wait for DB connection
+  startServer();
 }
 
 // Crash handlers so we can see errors in logs and let the platform restart the container
