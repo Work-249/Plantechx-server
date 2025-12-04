@@ -48,12 +48,16 @@ app.use(limiter);
 const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
 const allowedOrigins = allowedOriginsEnv ? allowedOriginsEnv.split(',').map(s => s.trim()) : null;
 const allowCredentials = process.env.ALLOW_CREDENTIALS === 'true';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g., curl, server-to-server)
     if (!origin) return callback(null, true);
-    if (!allowedOrigins) return callback(null, true); // allow all
+    // In non-production (development/testing), allow all origins
+    if (!isProduction) return callback(null, true);
+    // In production, check against allowed list
+    if (!allowedOrigins) return callback(null, true); // allow all if no restrictions
     if (allowedOrigins.includes(origin)) return callback(null, true);
     return callback(new Error('CORS origin denied'));
   },
@@ -67,15 +71,23 @@ app.options('*', cors(corsOptions));
 
 // Ensure CORS headers are present on every response — helpful for debugging
 app.use((req, res, next) => {
-  const origin = req.headers.origin || '*';
+  const origin = req.headers.origin;
 
-  // If ALLOWED_ORIGINS is set, only echo back allowed origins.
-  if (process.env.ALLOWED_ORIGINS) {
+  // In non-production, echo back the origin or use wildcard
+  if (!isProduction) {
+    if (origin) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+    }
+  } else if (process.env.ALLOWED_ORIGINS) {
+    // In production with explicit origins, only echo back allowed origins
     const allowed = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
-    if (allowed.includes(origin)) {
+    if (origin && allowed.includes(origin)) {
       res.setHeader('Access-Control-Allow-Origin', origin);
     }
   } else {
+    // Default to wildcard in production without restrictions
     res.setHeader('Access-Control-Allow-Origin', '*');
   }
 
