@@ -46,8 +46,9 @@ class EmailService {
     this.retryDelay = 2000;
     this.isConfigured = !!(process.env.EMAIL_USER && process.env.EMAIL_PASS);
 
+    // Skip verification to avoid timeouts during startup; verification will happen on first send attempt
     if (this.isConfigured) {
-      this.verifyConnection();
+      logger.info('Email service ready (verification deferred)');
     } else {
       logger.warn('Email service not configured - missing EMAIL_USER or EMAIL_PASS environment variables');
     }
@@ -76,6 +77,13 @@ class EmailService {
   }
 
   async sendWithRetry(mailOptions, meta = {}, retries = this.maxRetries) {
+    // Development/dev-shim: if EMAIL_FAKE is set, don't actually send email — simulate success.
+    if (process.env.EMAIL_FAKE === 'true') {
+      const fakeMessageId = `fake-${Date.now()}`;
+      console.log(`[email][FAKE] Simulated send to ${String(mailOptions.to || '')} (messageId=${fakeMessageId})`);
+      // Return a success-like object so callers behave as if email was sent
+      return { success: true, attempt: 0, messageId: fakeMessageId };
+    }
     if (!this.isConfigured) {
       logger.warn('Email service not configured - skipping email send', logger.sanitizeMeta(mailOptions));
       return {
@@ -86,15 +94,20 @@ class EmailService {
     }
 
     for (let attempt = 1; attempt <= retries; attempt++) {
+      // Plain console logging to make send attempts visible during development
       try {
-  const info = await this.transporter.sendMail(mailOptions);
-  logger.info('✓ Email sent successfully', Object.assign({}, logger.sanitizeMeta(mailOptions), { attempt, messageId: info.messageId }));
+        console.log(`[email] Sending to ${String(mailOptions.to || '')} (attempt ${attempt}/${retries})`);
+        const info = await this.transporter.sendMail(mailOptions);
+        logger.info('✓ Email sent successfully', Object.assign({}, logger.sanitizeMeta(mailOptions), { attempt, messageId: info.messageId }));
+        console.log(`[email] Sent ✓ to ${String(mailOptions.to || '')} (messageId=${info.messageId})`);
         return { success: true, attempt, messageId: info.messageId };
       } catch (error) {
-  logger.errorLog(error, Object.assign({ context: 'Email send attempt', attempt, maxRetries: retries, errorCode: error.code, command: error.command }, logger.sanitizeMeta(mailOptions)));
+        console.error(`[email] Error sending to ${String(mailOptions.to || '')} (attempt ${attempt}/${retries}):`, error && error.message ? error.message : error);
+        logger.errorLog(error, Object.assign({ context: 'Email send attempt', attempt, maxRetries: retries, errorCode: error && error.code, command: error && error.command }, logger.sanitizeMeta(mailOptions)));
 
         if (attempt < retries) {
           const delay = this.retryDelay * attempt;
+          console.log(`[email] Retrying in ${delay}ms...`);
           logger.info(`Retrying email send in ${delay}ms...`, { attempt: attempt + 1, maxRetries: retries });
           await new Promise(resolve => setTimeout(resolve, delay));
         } else {
@@ -111,18 +124,20 @@ class EmailService {
               status: 'failed',
               attempts: retries,
               lastAttemptAt: new Date(),
-              error: error.message
+              error: error && error.message ? error.message : String(error)
             });
             logger.info('Persisted failed email to PendingEmail', { to: logger.maskEmail(recipient), type: meta.type || 'notification' });
+            console.error(`[email] Persisted failed email for ${recipient}`);
           } catch (persistErr) {
             logger.errorLog(persistErr, { context: 'Persist failed email', to: logger.maskEmail(mailOptions.to) });
+            console.error(`[email] Failed to persist failed email for ${String(mailOptions.to || '')}:`, persistErr && persistErr.message ? persistErr.message : persistErr);
           }
 
           return {
             success: false,
-            error: error.message,
+            error: error && error.message ? error.message : String(error),
             attempts: retries,
-            errorCode: error.code
+            errorCode: error && error.code
           };
         }
       }
@@ -153,7 +168,7 @@ class EmailService {
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background-color: #3B82F6; color: white; padding: 20px; text-align: center;">
-            <h1>Academic Management System</h1>
+            <h1>Plantechx</h1>
           </div>
           <div style="padding: 20px; background-color: #f9f9f9;">
             <h2>Welcome, ${userName}!</h2>
@@ -178,7 +193,7 @@ class EmailService {
             </div>
           </div>
           <div style="background-color: #374151; color: white; text-align: center; padding: 10px;">
-            <p>Academic Management System © 2025</p>
+            <p>Plantechx © 2025</p>
           </div>
         </div>
       `
@@ -219,7 +234,7 @@ class EmailService {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: toAddress,
-      subject: 'Password Reset Request - Academic Management System',
+      subject: 'Password Reset Request - Plantechx',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background-color: #3B82F6; color: white; padding: 20px; text-align: center;">
@@ -227,7 +242,7 @@ class EmailService {
           </div>
           <div style="padding: 20px; background-color: #f9f9f9;">
             <h2>Hello, ${userName}!</h2>
-            <p>You requested a password reset for your Academic Management System account.</p>
+            <p>You requested a password reset for your Plantechx account.</p>
             
             <div style="text-align: center; margin: 30px 0;">
               <a href="${resetUrl}" 
@@ -307,7 +322,7 @@ class EmailService {
             </div>
           </div>
           <div style="background-color: #374151; color: white; text-align: center; padding: 10px;">
-            <p>Academic Management System © 2025</p>
+            <p>Plantechx © 2025</p>
           </div>
         </div>
       `
@@ -357,7 +372,7 @@ class EmailService {
             </div>
           </div>
           <div style="background-color: #374151; color: white; text-align: center; padding: 10px;">
-            <p>Academic Management System © 2025</p>
+            <p>Plantechx © 2025</p>
           </div>
         </div>
       `
@@ -414,7 +429,7 @@ class EmailService {
             </div>
           </div>
           <div style="background-color: #374151; color: white; text-align: center; padding: 10px;">
-            <p>Academic Management System © 2025</p>
+            <p>Plantechx © 2025</p>
           </div>
         </div>
       `
@@ -488,7 +503,7 @@ class EmailService {
             </div>
           </div>
           <div style="background-color: #374151; color: white; text-align: center; padding: 10px;">
-            <p>Academic Management System © 2025</p>
+            <p>Plantechx © 2025</p>
           </div>
         </div>
       `
