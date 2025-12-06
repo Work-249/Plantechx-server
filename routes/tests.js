@@ -894,7 +894,26 @@ router.post('/assignment/:id/assign-students', auth, authorize('college_admin'),
 
     // Create student assignments
     const studentAssignments = [];
+    let newStudentsCount = 0;
+    let existingStudentsCount = 0;
+
     for (const student of students) {
+      // Check if this student already has this test assigned
+      const existingAssignment = await TestAssignment.findOne({
+        testId: assignment.testId._id,
+        collegeId: req.user.collegeId,
+        assignedTo: 'students',
+        'studentFilters.specificStudents': student._id,
+        status: 'accepted'
+      });
+
+      if (existingAssignment) {
+        // Student already has this test assigned, skip
+        existingStudentsCount++;
+        continue;
+      }
+
+      // Create new assignment only for students who don't have it yet
       const studentAssignment = new TestAssignment({
         testId: assignment.testId._id,
         collegeId: req.user.collegeId,
@@ -908,8 +927,9 @@ router.post('/assignment/:id/assign-students', auth, authorize('college_admin'),
 
       await studentAssignment.save();
       studentAssignments.push(studentAssignment);
+      newStudentsCount++;
 
-      // Send email notification to student
+      // Send email notification ONLY to newly assigned students
       await emailService.sendTestAssignmentToStudent(
         student.email,
         student.name,
@@ -921,8 +941,9 @@ router.post('/assignment/:id/assign-students', auth, authorize('college_admin'),
     }
 
     res.json({
-      message: `Test assigned to ${students.length} students successfully`,
-      studentsAssigned: students.length
+      message: `Test assigned to ${newStudentsCount} new students${existingStudentsCount > 0 ? `, ${existingStudentsCount} students already had this test assigned` : ''}`,
+      studentsAssigned: newStudentsCount,
+      studentsAlreadyAssigned: existingStudentsCount
     });
 
   } catch (error) {
