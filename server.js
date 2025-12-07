@@ -34,11 +34,29 @@ app.set('trust proxy', 1);
 // Security middleware
 app.use(helmet());
 
+// Import security middleware
+const { 
+  securityHeaders, 
+  logSuspiciousRequest,
+  requestTimeout 
+} = require('./middleware/security');
+
+// Apply additional security headers
+app.use(securityHeaders);
+
+// Log suspicious requests
+app.use(logSuspiciousRequest);
+
+// Set request timeout (30 seconds)
+app.use(requestTimeout(30000));
+
 // Rate limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: process.env.NODE_ENV === 'development' ? 1000 : 100,
-  message: 'Too many requests from this IP, please try again later.'
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 app.use(limiter);
 
