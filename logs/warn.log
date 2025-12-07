@@ -1,0 +1,73 @@
+{"timestamp":"2025-11-19T19:59:05.946Z","level":"WARN","message":"Authentication failed - user not found or inactive","userId":"691e1e1a34135654852f7670","ip":"127.0.0.1"}
+{"timestamp":"2025-11-19T20:19:10.477Z","level":"WARN","message":"Authentication failed - invalid token","error":"getaddrinfo ENOTFOUND ac-tcrbnhx-shard-00-00.igezekd.mongodb.net","ip":"127.0.0.1"}
+{"timestamp":"2025-11-19T20:19:43.074Z","level":"WARN","message":"Authentication failed - invalid token","error":"getaddrinfo ENOTFOUND ac-tcrbnhx-shard-00-00.igezekd.mongodb.net","ip":"127.0.0.1"}
+{"timestamp":"2025-11-19T20:19:50.778Z","level":"WARN","message":"Authentication failed - invalid token","error":"getaddrinfo ENOTFOUND ac-tcrbnhx-shard-00-00.igezekd.mongodb.net","ip":"127.0.0.1"}
+{"timestamp":"2025-11-19T20:20:11.100Z","level":"WARN","message":"Authentication failed - invalid token","error":"getaddrinfo ENOTFOUND ac-tcrbnhx-shard-00-00.igezekd.mongodb.net","ip":"127.0.0.1"}
+{"timestamp":"2025-11-20T15:16:01.316Z","level":"WARN","message":"Authentication failed - invalid token","error":"Operation `users.findOne()` buffering timed out after 10000ms","ip":"127.0.0.1"}
+{"timestamp":"2025-11-20T15:32:47.313Z","level":"WARN","message":"Login failed - user not found","email":"r***@gmail.com"}
+{"timestamp":"2025-11-20T15:33:33.495Z","level":"WARN","message":"Authentication failed - user not found or inactive","userId":"691f324a7d068a4afab26c70","ip":"127.0.0.1"}
+{"timestamp":"2025-11-20T15:33:33.543Z","level":"WARN","message":"Authentication failed - user not found or inactive","userId":"691f324a7d068a4afab26c70","ip":"127.0.0.1"}
+{"timestamp":"2025-11-20T15:38:24.458Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-11-20T15:38:54.455Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-11-20T15:39:14.298Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/faculty/student-reports"}
+{"timestamp":"2025-11-20T15:39:14.302Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/faculty/student-reports"}
+{"timestamp":"2025-11-20T15:39:15.577Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/faculty/student-reports"}
+{"timestamp":"2025-11-20T15:43:18.787Z","level":"WARN","message":"Login failed - invalid password","email":"r***@gmail.com","userId":"68efb9a094d0fb7785e1ce9a"}
+{"timestamp":"2025-11-20T15:43:36.267Z","level":"WARN","message":"Login failed - invalid password","email":"r***@gmail.com","userId":"68efb9a094d0fb7785e1ce9a"}
+{"timestamp":"2025-11-20T15:43:56.002Z","level":"WARN","message":"Login failed - invalid password","email":"r***@gmail.com","userId":"68efb9a094d0fb7785e1ce9a"}
+{"timestamp":"2025-11-23T13:40:40.415Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-11-23T13:40:40.448Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-04T15:47:10.162Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-04T15:47:10.177Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-04T16:50:49.739Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-04T16:58:30.521Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-04T17:00:30.203Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-04T17:00:30.214Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-05T17:41:26.046Z","level":"WARN","message":"Login failed - invalid password","email":"s***@gmail.com","userId":"68e38b6572b22843edea091f"}
+{"timestamp":"2025-12-05T17:42:22.830Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"68e377674ca3ead847bbb057","userRole":"college_admin","requiredRoles":["student"],"url":"/student/assigned?testType=Assessment"}
+{"timestamp":"2025-12-05T17:42:24.521Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"68e377674ca3ead847bbb057","userRole":"college_admin","requiredRoles":["student"],"url":"/student/assigned"}
+{"timestamp":"2025-12-05T17:42:26.263Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"68e377674ca3ead847bbb057","userRole":"college_admin","requiredRoles":["student"],"url":"/student/assigned"}
+{"timestamp":"2025-12-05T17:42:34.054Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T17:42:34.065Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T17:42:35.865Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/college/all-tests?testType=Assessment"}
+{"timestamp":"2025-12-05T18:15:45.052Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T18:15:45.063Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T18:17:32.929Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/dashboard"}
+{"timestamp":"2025-12-05T18:17:32.947Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/users/student?page=1&limit=50"}
+{"timestamp":"2025-12-05T18:17:45.041Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T18:17:47.742Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T18:18:11.810Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/dashboard"}
+{"timestamp":"2025-12-05T18:18:12.466Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/dashboard"}
+{"timestamp":"2025-12-05T19:19:35.572Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"6933301a8d623022a4c51b84","userRole":"student","requiredRoles":["college_admin","faculty"],"url":"/college/all-tests?testType=Assessment"}
+{"timestamp":"2025-12-05T19:20:01.738Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-05T19:20:25.652Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"68e377674ca3ead847bbb057","userRole":"college_admin","requiredRoles":["student"],"url":"/student/assigned?testType=Assessment"}
+{"timestamp":"2025-12-05T19:20:27.334Z","level":"WARN","message":"Authorization failed - insufficient permissions","userId":"68e377674ca3ead847bbb057","userRole":"college_admin","requiredRoles":["student"],"url":"/student/assigned"}
+{"timestamp":"2025-12-06T09:32:03.050Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:32:05.730Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:32:06.734Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:32:17.898Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/"}
+{"timestamp":"2025-12-06T09:32:17.902Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:32:17.913Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/metrics/activity-summary"}
+{"timestamp":"2025-12-06T09:32:17.919Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/colleges"}
+{"timestamp":"2025-12-06T09:32:17.929Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/stats"}
+{"timestamp":"2025-12-06T09:32:17.934Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/dashboard?days=30"}
+{"timestamp":"2025-12-06T09:32:17.983Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/"}
+{"timestamp":"2025-12-06T09:32:17.993Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:32:17.998Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/metrics/activity-summary"}
+{"timestamp":"2025-12-06T09:32:18.003Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/colleges"}
+{"timestamp":"2025-12-06T09:32:18.011Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/stats"}
+{"timestamp":"2025-12-06T09:32:18.016Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/dashboard?days=30"}
+{"timestamp":"2025-12-06T09:32:18.121Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/stats"}
+{"timestamp":"2025-12-06T09:32:18.165Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/stats"}
+{"timestamp":"2025-12-06T09:32:32.735Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T09:45:09.740Z","level":"WARN","message":"Authentication failed - no token provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+{"timestamp":"2025-12-06T13:36:47.459Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:36:47.549Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:36:47.576Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:36:47.613Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt malformed","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:23.222Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:23.241Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:23.370Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:57.889Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:57.910Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+{"timestamp":"2025-12-06T13:38:58.022Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
