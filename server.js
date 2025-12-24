@@ -8,6 +8,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const session = require('express-session');
+const { MongoStore } = require('connect-mongo');
+
 // Bootstrap log to make startup visible in container logs
 console.log('➡️  Starting server bootstrap... NODE_ENV=', process.env.NODE_ENV);
 console.log('📁 Working directory:', process.cwd());
@@ -50,13 +53,14 @@ app.use(logSuspiciousRequest);
 // Set request timeout (30 seconds)
 app.use(requestTimeout(30000));
 
-// Rate limiter
+// Rate limiter - skip OPTIONS requests for CORS preflight
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: process.env.NODE_ENV === 'development' ? 1000 : 100,
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => req.method === 'OPTIONS' // Skip rate limiting for preflight requests
 });
 app.use(limiter);
 
@@ -72,60 +76,43 @@ const corsOptions = {
   origin: (origin, callback) => {
     // Allow requests with no origin (e.g., curl, server-to-server)
     if (!origin) return callback(null, true);
-    // In non-production (development/testing), allow all origins
+    // In dev, allow localhost:5173 or current origin
     if (!isProduction) return callback(null, true);
     // In production, check against allowed list
-    if (!allowedOrigins) return callback(null, true); // allow all if no restrictions
-    if (allowedOrigins.includes(origin)) return callback(null, true);
+    if (allowedOrigins && allowedOrigins.includes(origin)) return callback(null, true);
+    if (!allowedOrigins) return callback(null, true); 
     return callback(new Error('CORS origin denied'));
   },
-  credentials: allowCredentials,
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   exposedHeaders: ['Authorization', 'Content-Length', 'X-Request-Id'],
 };
+
+console.log("------------------------------",corsOptions)
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-
-// Ensure CORS headers are present on every response — helpful for debugging
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-
-  // In non-production, echo back the origin or use wildcard
-  if (!isProduction) {
-    if (origin) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-    } else {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-    }
-  } else if (process.env.ALLOWED_ORIGINS) {
-    // In production with explicit origins, only echo back allowed origins
-    const allowed = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim());
-    if (origin && allowed.includes(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-  } else {
-    // Default to wildcard in production without restrictions
-    res.setHeader('Access-Control-Allow-Origin', '*');
-  }
-
-  res.setHeader('Access-Control-Allow-Headers', (corsOptions.allowedHeaders || []).join(','));
-  res.setHeader('Access-Control-Allow-Methods', (corsOptions.methods || []).join(','));
-
-  // Do not set Access-Control-Allow-Credentials unless explicitly required
-  if (process.env.ALLOW_CREDENTIALS === 'true') {
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-  }
-
-  // Short-circuit OPTIONS requests with OK so preflight always succeeds
-  if (req.method === 'OPTIONS') return res.sendStatus(204);
-
-  next();
-});
 
 // Body parser
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'plantex-secret-key-change-this',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongoUrl: process.env.MONGODB_URI,
+    ttl: 7 * 24 * 60 * 60 // 7 days in seconds
+  }),
+  cookie: {
+    secure: isProduction,
+    httpOnly: true,
+    sameSite: isProduction ? 'none' : 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
+  }
+}));
 
 // Debugging incoming requests
 app.use((req, res, next) => {

@@ -1,30 +1,27 @@
-const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const logger = require('./logger');
 
 const auth = async (req, res, next) => {
   try {
     console.log('[AUTH] Starting authentication', { method: req.method, url: req.url });
-    const token = req.header('Authorization')?.replace('Bearer ', '');
     
-    if (!token) {
-      console.log('[AUTH] No token provided', { method: req.method, url: req.url });
-      logger.warn('Authentication failed - no token provided', { 
+    if (!req.session || !req.session.user) {
+      console.log('[AUTH] No session found', { method: req.method, url: req.url });
+      logger.warn('Authentication failed - no session provided', { 
         ip: req.ip, 
         url: req.url 
       });
-      return res.status(401).json({ error: 'No token, authorization denied' });
+      return res.status(401).json({ error: 'Session expired or not found. Please log in.' });
     }
     
-    console.log('[AUTH] Token found, verifying...', { method: req.method, url: req.url });
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log('[AUTH] Token verified, looking up user...', { decodedId: decoded.id, method: req.method, url: req.url });
-    const user = await User.findById(decoded.id).populate('collegeId');
+    const userId = req.session.user.id;
+    console.log('[AUTH] Session found, looking up user...', { userId, method: req.method, url: req.url });
     
+    const user = await User.findById(userId).populate('collegeId');
     if (!user || !user.isActive) {
-      console.log('[AUTH] User not found or inactive', { userId: decoded.id, found: !!user, isActive: user?.isActive });
+      console.log('[AUTH] User not found or inactive', { userId, found: !!user, isActive: user?.isActive });
       logger.warn('Authentication failed - user not found or inactive', { 
-        userId: decoded.id,
+        userId,
         ip: req.ip 
       });
       return res.status(401).json({ error: 'User not found or inactive' });
@@ -35,8 +32,6 @@ const auth = async (req, res, next) => {
       userId: user._id,
       userName: user.name,
       userRole: user.role,
-      userRoleType: typeof user.role,
-      roleCharCodes: user.role.split('').map(c => c.charCodeAt(0)),
       url: req.url,
       method: req.method
     });
@@ -52,11 +47,8 @@ const auth = async (req, res, next) => {
       method: req.method, 
       url: req.url 
     });
-    logger.warn('Authentication failed - invalid token', { 
-      error: error.message,
-      ip: req.ip 
-    });
-    res.status(401).json({ error: 'Token is not valid' });
+    logger.errorLog(error, { context: 'Auth Middleware', ip: req.ip });
+    res.status(401).json({ error: 'Authentication failed' });
   }
 };
 
