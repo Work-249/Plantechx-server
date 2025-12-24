@@ -150,7 +150,7 @@ class EmailService {
 
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       logger.errorLog(new Error('Email configuration missing'), { context: 'Send Login Credentials' });
-      return { success: false, error: 'Email not configured', email: logger.maskEmail(userEmail), role };
+      return { success: false, error: 'Email not configured', email: this.maskEmail(userEmail), role };
     }
 
     const roleText = this.getRoleDisplayName(role);
