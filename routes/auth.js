@@ -1,5 +1,4 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const User = require('../models/User');
 const emailService = require('../utils/emailService');
@@ -38,18 +37,19 @@ router.post('/login', [
     }
 
     // Update login tracking
-  user.lastLogin = new Date();
-  user.hasLoggedIn = true;
-  user.loginCount = (user.loginCount || 0) + 1;
-  await user.save();
+    user.lastLogin = new Date();
+    user.hasLoggedIn = true;
+    user.loginCount = (user.loginCount || 0) + 1;
+    await user.save();
 
     logger.authLog('LOGIN_SUCCESS', user, { ip: req.ip });
 
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    // Establish Session
+    req.session.user = {
+      id: user._id,
+      role: user.role,
+      collegeId: user.collegeId?._id
+    };
 
     const userResponse = {
       id: user._id,
@@ -68,7 +68,7 @@ router.post('/login', [
       role: user.role 
     });
 
-    res.json({ token, user: userResponse });
+    res.json({ user: userResponse });
   } catch (error) {
     logger.errorLog(error, { context: 'User Login', email: req.body.email });
     res.status(500).json({ error: 'Server error' });
@@ -140,26 +140,16 @@ router.put('/profile', auth, [
   }
 });
 
-// Refresh token
-router.post('/refresh-token', auth, async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).populate('collegeId');
-    if (!user || !user.isActive) {
-      return res.status(401).json({ error: 'User not found or inactive' });
+// Logout
+router.post('/logout', auth, (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      logger.error('Logout failed', { userId: req.user._id, error: err.message });
+      return res.status(500).json({ error: 'Could not log out' });
     }
-
-    const newToken = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
-    logger.info('Token refreshed', { userId: user._id });
-    res.json({ token: newToken });
-  } catch (error) {
-    logger.errorLog(error, { context: 'Token Refresh', userId: req.user?._id });
-    res.status(500).json({ error: 'Server error' });
-  }
+    res.clearCookie('connect.sid');
+    res.json({ message: 'Logged out successfully' });
+  });
 });
 
 // Change password
