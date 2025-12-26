@@ -307,15 +307,19 @@ const requestSizeLimits = {
 /**
  * Request timeout middleware
  */
+// D:\plantex\Plantechx-server\middleware\security.js
+
 const requestTimeout = (timeout = 30000) => {
   return (req, res, next) => {
     res.setTimeout(timeout, () => {
-      res.status(408).json({ error: 'Request timeout' });
+      // Check if headers were already sent to prevent the crash
+      if (!res.headersSent) {
+        res.status(408).json({ error: 'Request timeout' });
+      }
     });
     next();
   };
 };
-
 // =============== SECURITY HEADERS MIDDLEWARE ===============
 
 /**
