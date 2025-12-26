@@ -1467,3 +1467,886 @@
 {"timestamp":"2025-12-06T16:06:53.202Z","level":"INFO","message":"Get current user request","userId":"68e377674ca3ead847bbb057"}
 {"timestamp":"2025-12-06T16:07:33.054Z","level":"INFO","message":"Get current user request","userId":"68e377674ca3ead847bbb057"}
 {"timestamp":"2025-12-06T16:07:45.388Z","level":"INFO","message":"Get current user request","userId":"68e377674ca3ead847bbb057"}
+<<<<<<< HEAD
+=======
+{"timestamp":"2025-12-16T04:25:59.950Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T04:25:59.959Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T04:26:00.294Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T04:26:02.679Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T04:26:02.682Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T04:26:04.111Z","level":"INFO","message":"Creating Master Admin user"}
+{"timestamp":"2025-12-16T04:26:04.701Z","level":"INFO","message":"Master Admin Created Successfully","email":"l***@gmail.com","hasDefaultPassword":true}
+{"timestamp":"2025-12-16T04:32:41.774Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T04:32:41.788Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T04:32:42.113Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T04:32:44.712Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T04:32:44.716Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T04:32:45.907Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":false}
+{"timestamp":"2025-12-16T04:39:31.421Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T04:39:32.154Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T04:39:32.165Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T04:39:32.721Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:32.815Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:33.034Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:33.038Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:33.110Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:33.332Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:34.438Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:34.513Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:35.692Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:35.948Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:44.030Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:44.212Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:44.281Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:45.910Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:47.478Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:47.571Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:47.738Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:47.816Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:49.121Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:50.746Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:50.976Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:51.044Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:51.182Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:52.774Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:54.383Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:54.472Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:55.153Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:55.306Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:56.884Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:57.824Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:39:57.906Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:39:57.974Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:39:58.044Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":0}
+{"timestamp":"2025-12-16T04:39:59.001Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:39:59.983Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-16T04:40:32.106Z","level":"INFO","message":"Sending login credentials email","to":"2***@adityatekkali.edu.in","role":"college_admin","collegeName":"AITAM"}
+{"timestamp":"2025-12-16T04:40:33.616Z","level":"INFO","message":"Retrying email send in 2000ms...","attempt":2,"maxRetries":3}
+{"timestamp":"2025-12-16T04:40:36.518Z","level":"INFO","message":"Retrying email send in 4000ms...","attempt":3,"maxRetries":3}
+{"timestamp":"2025-12-16T04:40:41.209Z","level":"INFO","message":"Persisted failed email to PendingEmail","to":"2***@adityatekkali.edu.in","type":"login_credentials"}
+{"timestamp":"2025-12-16T04:41:01.903Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:41:01.980Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:41:02.208Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:41:03.907Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:41:05.088Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:41:08.517Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:41:08.660Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:41:08.753Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:41:10.348Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:41:11.698Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:45:28.418Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T04:45:28.428Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T04:45:28.668Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T04:45:30.492Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T04:45:30.495Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T04:45:31.840Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T04:45:49.403Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T04:45:50.292Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T04:45:50.302Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T04:45:50.900Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:45:50.977Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:45:51.043Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:45:51.267Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:45:51.339Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:45:51.410Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:45:52.571Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:45:52.977Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:45:53.437Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:45:54.844Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:45:55.621Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:45:55.786Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:45:58.933Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:45:59.007Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:45:59.139Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:46:00.818Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:46:02.577Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:46:02.724Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:46:02.803Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:46:02.873Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:46:05.012Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:46:06.665Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:46:16.904Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-16T04:46:22.290Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:46:22.484Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:46:25.801Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:46:25.874Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:46:26.007Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:46:27.166Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:46:28.606Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T04:46:28.689Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T04:46:28.787Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T04:46:28.872Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T04:46:29.757Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T04:46:31.751Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:08:26.220Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T05:08:26.235Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T05:08:26.474Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T05:08:28.404Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T05:08:28.406Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T05:08:29.134Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T05:29:41.788Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-16T05:30:11.792Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-16T05:36:04.525Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T05:36:04.534Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T05:36:04.772Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T05:36:06.526Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T05:36:06.533Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T05:36:07.530Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T05:36:11.283Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-16T05:37:44.726Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T05:37:45.535Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T05:37:45.569Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T05:37:46.139Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:37:46.215Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:37:46.359Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:37:46.457Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:37:46.530Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:37:46.695Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:37:48.112Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:37:48.598Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:37:49.628Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:37:49.704Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:37:49.888Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:37:50.047Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:37:50.461Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:37:51.568Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:37:53.092Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:02.778Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:02.866Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:03.036Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:04.666Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:05.639Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:07.796Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:07.892Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:07.964Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:09.600Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:11.043Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:24.824Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:24.909Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:24.997Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:26.098Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:26.181Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:26.265Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:26.506Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:27.040Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:27.144Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:27.221Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:27.766Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:28.414Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:28.904Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:29.268Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:29.823Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:30.399Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:30.556Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T05:38:30.651Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T05:38:32.957Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T05:38:34.330Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T05:38:49.498Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T05:38:49.505Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:05:07.133Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T06:05:07.144Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T06:05:07.411Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T06:05:09.768Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T06:05:09.771Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T06:05:10.746Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T06:05:28.981Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T06:05:29.655Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T06:05:29.661Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T06:05:31.085Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:05:31.268Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:05:31.356Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:05:31.702Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:05:31.896Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:05:31.991Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:05:33.281Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:05:34.035Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:05:34.922Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:05:35.583Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:06:23.157Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:23.229Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:06:23.422Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:06:25.125Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:06:26.744Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:06:37.285Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:37.377Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:06:37.555Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:06:38.899Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:06:39.561Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:39.629Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:06:39.700Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:06:40.724Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:06:41.213Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:06:41.642Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:41.709Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:06:41.800Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:06:43.381Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:43.492Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:06:43.502Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:06:43.710Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:06:44.879Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:06:46.626Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:06:47.867Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:06:48.284Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:48.296Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:06:48.705Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:25:38.464Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T06:25:39.499Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T06:25:39.519Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T06:25:40.078Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:25:40.165Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:25:40.364Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:25:40.444Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:25:40.771Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:25:40.866Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:25:41.862Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:25:43.125Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:25:44.746Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:25:45.576Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:25:51.137Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:25:51.248Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:25:51.428Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:25:52.907Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:25:54.840Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:25:56.643Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:25:56.649Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:25:59.967Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:00.635Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:00.900Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:01.223Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:01.385Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:01.449Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:02.817Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:02.999Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:03.002Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:03.105Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:03.419Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:04.868Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:26:04.954Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:05.160Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:26:05.786Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:05.866Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:06.730Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:06.866Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:26:07.709Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:07.792Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:07.960Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:08.693Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:08.975Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T06:26:09.048Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T06:26:09.127Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T06:26:09.579Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:10.092Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:26:10.596Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T06:26:11.310Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T06:26:12.770Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:44:36.286Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T09:44:36.303Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T09:44:36.624Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T09:48:14.002Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T09:48:14.010Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T09:48:14.247Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T09:55:07.122Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T09:55:07.131Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T09:55:07.356Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T09:56:33.775Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T09:56:33.784Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T09:56:34.040Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T09:56:45.549Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T09:56:45.557Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T09:56:45.776Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T09:56:48.719Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T09:56:48.720Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T09:56:50.046Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T09:57:14.451Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T09:57:15.378Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T09:57:15.390Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T09:57:16.172Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:16.300Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:16.434Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:16.654Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:16.802Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:16.984Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:18.391Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:18.417Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:18.651Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:18.692Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:18.860Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:19.796Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:19.853Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:19.858Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:22.966Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:24.084Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:24.182Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:24.493Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:26.371Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:28.583Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:28.813Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:28.896Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:28.968Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:30.879Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:30.953Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:31.038Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:31.043Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:32.882Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:32.996Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:33.112Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:33.182Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:35.688Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:35.821Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:35.892Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:36.138Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:37.972Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:40.930Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:41.009Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:41.266Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T09:57:41.761Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T09:57:43.265Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T09:57:45.368Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T09:57:46.612Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T09:57:46.630Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:27:17.373Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T10:27:17.379Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T10:27:17.690Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T10:28:43.798Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-16T10:28:43.805Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-16T10:28:44.128Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-16T10:28:46.610Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-16T10:28:46.612Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-16T10:28:48.259Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-16T10:29:01.081Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-16T10:29:03.076Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-16T10:29:03.091Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-16T10:29:03.755Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:04.114Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:04.325Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:04.740Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:04.912Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:05.017Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:05.941Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:07.113Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:07.853Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:08.601Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:08.834Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:08.911Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:09.141Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:11.055Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:12.741Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:12.877Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:12.974Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:13.058Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:15.796Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:17.707Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:17.912Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:18.006Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:18.139Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:19.649Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:21.575Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:23.422Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:23.449Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:26.876Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:27.074Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:27.169Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:27.549Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:27.879Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-16T10:29:28.408Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-16T10:29:29.396Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:31.360Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-16T10:29:32.392Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:33.582Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-16T10:29:54.581Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-16T10:29:54.706Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-17T09:45:06.685Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-17T09:45:06.700Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-17T09:45:07.425Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-17T09:47:03.294Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-17T09:47:03.308Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-17T09:47:03.892Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-17T09:47:37.413Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-17T09:47:37.421Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-17T09:47:37.844Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-17T09:48:12.060Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-17T09:48:12.068Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-17T09:48:12.478Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-17T09:48:56.944Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-17T09:48:56.953Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-17T09:48:57.391Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T05:54:46.043Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T05:54:46.066Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T05:54:46.720Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T05:54:55.369Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T05:54:55.382Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T05:54:55.733Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T05:58:12.890Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T05:58:12.903Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T05:58:13.566Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:03:26.728Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:03:26.745Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:03:27.133Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:03:32.903Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:03:32.906Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:03:33.920Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:04:11.305Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-22T06:04:38.155Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-22T06:04:39.134Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-22T06:04:39.137Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-22T06:04:39.971Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:04:40.216Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:04:40.328Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:04:41.932Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:04:42.044Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:04:42.255Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:04:42.342Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:04:43.943Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:04:44.071Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:04:45.800Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:05:11.624Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:05:11.724Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:05:11.820Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:05:13.253Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:05:14.767Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:05:15.352Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:05:15.530Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:05:15.643Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:05:17.190Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:05:18.996Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:05:19.488Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:05:19.739Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:05:19.816Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:05:23.554Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:05:26.578Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-22T06:05:40.476Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:05:41.021Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:05:41.630Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:05:46.199Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:05:51.286Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:05:52.515Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:05:52.712Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-22T06:05:53.381Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:05:54.442Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:06:02.367Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:06:06.383Z","level":"INFO","message":"Login attempt","email":"2***@adityatekkali.edu.in"}
+{"timestamp":"2025-12-22T06:06:08.924Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:06:50.539Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:06:52.540Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:09:46.813Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:09:46.824Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:09:47.428Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:09:52.028Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:09:52.031Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:09:53.281Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:12:11.746Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:12:11.758Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:12:12.057Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:13:04.441Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:13:04.473Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:13:04.864Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:14:12.307Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:14:12.321Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:14:12.733Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:16:24.254Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:16:24.269Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:16:24.603Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:16:27.758Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:16:27.759Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:16:29.460Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:17:02.344Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:17:02.357Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:17:02.821Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:17:03.982Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:17:03.984Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:17:04.715Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:17:10.437Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:17:10.452Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:17:10.760Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:17:12.774Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:17:12.776Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:17:14.064Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:17:26.412Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"devlopment","user":"Configured"}
+{"timestamp":"2025-12-22T06:17:26.424Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T06:17:26.706Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T06:17:28.562Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T06:17:28.563Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T06:17:29.532Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T06:17:57.597Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:17:58.327Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:00.915Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:00.995Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:01.124Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:01.290Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:01.411Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:01.586Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:02.490Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:03.126Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:04.362Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:04.873Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:05.715Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:05.814Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:05.980Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:07.895Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:09.109Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:09.396Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:09.477Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:09.586Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:10.952Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:11.031Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:11.093Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:11.173Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:12.129Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:12.334Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:13.503Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:34.515Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:34.643Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:37.865Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:37.959Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:38.066Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:38.269Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:18:38.359Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:18:38.477Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:18:39.437Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:39.606Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:18:40.614Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:18:41.030Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:03.436Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:03.520Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:03.598Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:04.702Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:05.764Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:09.084Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:09.090Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:12.416Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:12.535Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:12.627Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:12.814Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:12.956Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:13.071Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:14.048Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:14.360Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:15.140Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:15.358Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:20.539Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:20.555Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:20.649Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:20.654Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:20.794Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:20.801Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:22.139Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:22.204Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:23.511Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:23.678Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T06:19:26.393Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:26.433Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:32.361Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T06:19:32.721Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T06:19:32.804Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T06:19:34.093Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T06:19:35.219Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T07:18:12.453Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"production","user":"Configured"}
+{"timestamp":"2025-12-22T07:18:12.467Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-22T07:18:12.785Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-22T07:18:18.679Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-22T07:18:18.680Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-22T07:18:21.174Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-22T07:18:45.128Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T07:18:46.548Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T07:18:48.686Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T07:18:48.816Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T07:18:48.970Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T07:18:50.754Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T07:18:52.671Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T07:18:53.089Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T07:18:53.185Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T07:18:53.259Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T07:18:54.743Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-22T07:18:56.553Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-22T07:19:44.378Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-22T07:19:44.588Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-22T07:19:44.797Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-22T07:19:46.842Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:31:56.204Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"production","user":"Configured"}
+{"timestamp":"2025-12-24T04:31:56.219Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T04:31:56.625Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T04:31:59.972Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T04:31:59.974Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T04:32:00.778Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T04:32:14.506Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:32:15.842Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:32:18.383Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:32:18.802Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:32:19.088Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:32:21.770Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:32:23.512Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-24T04:32:23.918Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:32:24.131Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:32:24.235Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:32:26.666Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:32:29.020Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-24T04:32:54.758Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:32:54.912Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:32:55.099Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:32:57.211Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:33:00.629Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":1,"totalStudents":0,"activeExams":0,"recentActivityCount":1}
+{"timestamp":"2025-12-24T04:35:37.321Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"production","user":"Configured"}
+{"timestamp":"2025-12-24T04:35:37.338Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T04:35:37.796Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T04:35:42.828Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-00.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T04:35:42.831Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T04:35:46.307Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T04:35:47.509Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:35:47.919Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:35:48.656Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:35:48.858Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:35:48.931Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:35:50.655Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:35:52.259Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:35:52.441Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:35:52.513Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:35:52.699Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:35:54.660Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:35:56.837Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:35:57.284Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:35:57.414Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:35:57.513Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:35:59.763Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:36:01.623Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:36:02.003Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:36:02.143Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:36:02.297Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:36:04.312Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:36:05.821Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:44:22.811Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"development","user":"Configured"}
+{"timestamp":"2025-12-24T04:44:22.831Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T04:44:23.181Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T04:44:49.178Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-02.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T04:44:49.184Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T04:44:51.328Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T04:44:52.668Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:44:53.373Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:44:55.570Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:44:55.690Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:44:56.076Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:44:57.938Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:45:01.893Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:45:02.179Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:45:02.434Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:45:02.660Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:45:04.789Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:55:26.607Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"development","user":"Configured"}
+{"timestamp":"2025-12-24T04:55:26.628Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T04:55:26.968Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T04:55:28.425Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-02.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T04:55:28.427Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T04:55:29.513Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T04:55:42.891Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:55:44.235Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:55:44.896Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:55:45.087Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:55:45.247Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:55:46.642Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:55:50.311Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:55:50.604Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:55:50.695Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:55:50.817Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:55:52.401Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:55:53.889Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:55:57.261Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:55:57.326Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:55:57.399Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:55:58.904Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:56:00.217Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:56:09.120Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:09.183Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:56:09.246Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:56:10.426Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:56:11.911Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:56:12.162Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:12.256Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:56:12.334Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:56:13.490Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:56:15.130Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:56:26.380Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:26.931Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:29.374Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:29.443Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:56:29.621Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:56:31.013Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:56:32.049Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T04:56:32.329Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T04:56:32.442Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T04:56:32.564Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T04:56:34.025Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T04:56:35.104Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:05:59.749Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:05:59.808Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:05:59.868Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:06:00.842Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:06:01.713Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:06:21.613Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:06:22.062Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:06:25.143Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:06:25.238Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:06:25.337Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:06:25.352Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:06:25.481Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:06:25.577Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:06:26.522Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:06:26.733Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:06:27.705Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:06:27.908Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:08:01.720Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:08:01.783Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:08:01.843Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:08:02.788Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:08:03.765Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:08:47.928Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:08:47.993Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:08:48.059Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:08:49.143Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:08:50.200Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:08:55.379Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:08:55.549Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:08:55.666Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:08:56.750Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:08:58.119Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:53:47.939Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"development","user":"Configured"}
+{"timestamp":"2025-12-24T05:53:47.965Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T05:53:48.410Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T05:53:50.315Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T05:53:50.317Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T05:53:50.978Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T05:54:12.656Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:12.974Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:16.173Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:16.241Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:54:16.331Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:54:17.455Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:54:18.569Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:54:18.832Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:18.936Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:54:19.090Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:54:20.493Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:54:21.963Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:54:25.598Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:25.697Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:54:25.772Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:54:27.446Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:54:28.811Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:54:33.931Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:34.262Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:37.707Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:37.842Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:54:37.997Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:54:39.002Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:54:40.070Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:54:40.317Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:54:40.407Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:54:40.487Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:54:41.449Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:54:42.463Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:57:56.788Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:57:57.094Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:01.342Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:01.420Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:01.531Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:02.522Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:58:03.504Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:58:03.776Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:03.843Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:03.913Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:04.976Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:58:06.009Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:58:39.415Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:39.753Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:44.090Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:44.170Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:44.246Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:45.290Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:58:46.331Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:58:46.650Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:46.745Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:46.912Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:48.077Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:58:50.059Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:58:50.134Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:50.474Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:53.933Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:53.995Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:54.066Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:55.048Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:58:57.729Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:58:57.954Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:58:58.018Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:58:58.087Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:58:58.997Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:59:00.037Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:59:13.974Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:59:14.889Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:59:17.689Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:59:17.824Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:59:17.952Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:59:19.222Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:59:20.214Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:59:21.131Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T05:59:21.215Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T05:59:21.292Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T05:59:22.296Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T05:59:23.293Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T05:59:50.037Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"development","user":"Configured"}
+{"timestamp":"2025-12-24T05:59:50.056Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T05:59:50.395Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T05:59:51.737Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T05:59:51.740Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T05:59:52.549Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T06:00:43.730Z","level":"INFO","message":"Initializing Email Service","host":"smtp.zoho.in","port":587,"secure":false,"environment":"development","user":"Configured"}
+{"timestamp":"2025-12-24T06:00:43.746Z","level":"INFO","message":"Email service ready (verification deferred)"}
+{"timestamp":"2025-12-24T06:00:44.053Z","level":"INFO","message":"Attempting to connect to MongoDB","uri":"URI provided"}
+{"timestamp":"2025-12-24T06:00:44.972Z","level":"INFO","message":"MongoDB Connected Successfully","host":"ac-ntvzawq-shard-00-01.iaydenv.mongodb.net","database":"test","port":27017}
+{"timestamp":"2025-12-24T06:00:44.974Z","level":"INFO","message":"Checking for Master Admin user"}
+{"timestamp":"2025-12-24T06:00:45.693Z","level":"INFO","message":"Master Admin already exists","email":"l***@gmail.com","hasLoggedIn":true}
+{"timestamp":"2025-12-24T06:01:05.214Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:05.672Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:08.353Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:08.640Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:08.719Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:10.813Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:12.071Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:01:26.711Z","level":"INFO","message":"Login attempt","email":"l***@gmail.com"}
+{"timestamp":"2025-12-24T06:01:27.615Z","level":"INFO","message":"Authentication Event","event":"LOGIN_SUCCESS","userId":"6940df5cc26f420837f200c2","userRole":"master_admin","ip":"127.0.0.1","userEmail":"l***@gmail.com"}
+{"timestamp":"2025-12-24T06:01:27.617Z","level":"INFO","message":"Login successful","userId":"6940df5cc26f420837f200c2","email":"l***@gmail.com","role":"master_admin"}
+{"timestamp":"2025-12-24T06:01:28.895Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:29.065Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:29.143Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:30.360Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:31.449Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:01:31.692Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:31.769Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:31.838Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:32.770Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:33.923Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:01:34.188Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:34.253Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:34.332Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:35.368Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:36.882Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:01:37.295Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:37.416Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:37.650Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:39.639Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:41.778Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:01:42.376Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:01:42.462Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:01:42.763Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:01:44.213Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:01:45.159Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:02:57.640Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:02:58.016Z","level":"INFO","message":"Get current user request","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:03:00.912Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:03:01.096Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:03:01.220Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:03:02.796Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:03:03.995Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+{"timestamp":"2025-12-24T06:03:04.240Z","level":"INFO","message":"Fetching dashboard analytics","userId":"6940df5cc26f420837f200c2"}
+{"timestamp":"2025-12-24T06:03:04.328Z","level":"INFO","message":"Pending College Assignments:","pendingCollegeAssignments":0}
+{"timestamp":"2025-12-24T06:03:04.453Z","level":"INFO","message":"Colleges Never Logged In:","collegesNeverLoggedIn":1}
+{"timestamp":"2025-12-24T06:03:05.467Z","level":"INFO","message":"Tests Completed In Period:","testsCompletedInPeriod":0}
+{"timestamp":"2025-12-24T06:03:06.727Z","level":"INFO","message":"Dashboard analytics fetched successfully","totalColleges":0,"totalStudents":0,"activeExams":0,"recentActivityCount":0}
+>>>>>>> bugs-server

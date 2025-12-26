@@ -71,3 +71,23 @@
 {"timestamp":"2025-12-06T13:38:57.889Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
 {"timestamp":"2025-12-06T13:38:57.910Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
 {"timestamp":"2025-12-06T13:38:58.022Z","level":"WARN","message":"Authentication failed - invalid token","error":"jwt expired","ip":"127.0.0.1"}
+<<<<<<< HEAD
+=======
+{"timestamp":"2025-12-16T04:46:17.626Z","level":"WARN","message":"Login failed - invalid password","email":"2***@adityatekkali.edu.in","userId":"6940e2bf742060c7ade0d596"}
+{"timestamp":"2025-12-16T05:36:12.205Z","level":"WARN","message":"Login failed - invalid password","email":"2***@adityatekkali.edu.in","userId":"6940e2bf742060c7ade0d596"}
+{"timestamp":"2025-12-22T06:03:57.438Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-22T06:03:57.469Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-22T06:04:11.482Z","level":"WARN","message":"Login failed - user not found","email":"l***@gmail.com"}
+{"timestamp":"2025-12-22T06:05:40.360Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-22T06:05:40.373Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-22T06:05:55.097Z","level":"WARN","message":"Login failed - invalid password","email":"2***@adityatekkali.edu.in","userId":"6940e2bf742060c7ade0d596"}
+{"timestamp":"2025-12-22T06:06:08.633Z","level":"WARN","message":"Login failed - invalid password","email":"2***@adityatekkali.edu.in","userId":"6940e2bf742060c7ade0d596"}
+{"timestamp":"2025-12-22T06:18:16.969Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-22T06:18:16.990Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-24T06:01:12.258Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/dashboard?days=30"}
+{"timestamp":"2025-12-24T06:01:12.309Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/dashboard?days=30"}
+{"timestamp":"2025-12-24T06:01:12.322Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/stats"}
+{"timestamp":"2025-12-24T06:01:13.825Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-24T06:01:13.840Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/me"}
+{"timestamp":"2025-12-24T06:01:17.937Z","level":"WARN","message":"Authentication failed - no session provided","ip":"127.0.0.1","url":"/my-notifications?page=1&limit=5"}
+>>>>>>> bugs-server
